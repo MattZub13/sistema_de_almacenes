@@ -1,0 +1,6 @@
+INSERT INTO Categoria (nombre, estado) VALUES ('PAPELERIA',1);
+INSERT INTO Categoria (nombre, estado) VALUES ('ESCRITURA',1);
+INSERT INTO Categoria (nombre, estado) VALUES ('ORGANIZACION',1);
+INSERT INTO Categoria (nombre, estado) VALUES ('TECNOLOGIA',1);
+INSERT INTO Categoria (nombre, estado) VALUES ('MOBILIARIO',1);
+INSERT INTO Categoria (nombre, estado) VALUES ('SUMINISTROS DE PRESENTACION',1);
