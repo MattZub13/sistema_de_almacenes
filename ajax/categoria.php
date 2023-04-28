@@ -4,7 +4,7 @@ require_once "../model/Categoria.php";
 $categoria=new Categoria();
 
 $id_categoria=isset($_POST["id_categoria"])? $_POST["id_categoria"]:"";
-$nombre=isset($_POST["nombre"])? mb_strtoupper($_POST["nombre"]):"";
+$nombre=isset($_POST["nombre"])? $_POST["nombre"]:"";
 
 
 
