@@ -53,20 +53,20 @@
                                                             <div class="form-group row">
                                                                 <label for="nombre" class="col-sm-3 col-form-label">Nombre del Articulo: </label>
                                                                 <div class="col-sm-9 mt-2">
-                                                                    <input type="hidden" name="idarticulo" id="idarticulo">
-                                                                    <input class="form-control" type="text" value="xyz" name="nombre" id="nombre">
+                                                                    <input type="hidden" name="id_articulo" id="id_articulo">
+                                                                    <input class="form-control" type="text"  name="nombre" id="nombre">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="descripcion" class="col-sm-3 col-form-label">Descripcion del Articulo: </label>
                                                                 <div class="col-sm-9 mt-2">
-                                                                    <input class="form-control" type="text" value="xyz" name="descripcion" id="descripcion">
+                                                                    <input class="form-control" type="text"  name="descripcion" id="descripcion">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="precio" class="col-sm-3 col-form-label">Precio Unitario: </label>
                                                                 <div class="col-sm-9">
-                                                                    <input class="form-control" type="number" value="42" name="precio" id="precio">
+                                                                    <input class="form-control" type="number"  name="precio" id="precio">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -97,7 +97,7 @@
         <!-- end wrapper -->
 <?php require_once'../view/footer.php';?>
 <!-- Required datatable js -->
-<script src="../public/horizontal/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../public/horizontal/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="../public/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../public/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="../view/script/articulo.js"></script>
 
