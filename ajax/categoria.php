@@ -16,15 +16,16 @@ switch ($_GET["op"]){
 
  		while ($reg = pg_fetch_assoc($rspta)){			
 			$data[]=array(
-				"0"=>($reg['estado_categoria'])?'<button class="btn btn-warning" onclick="mostrar('.$reg['id_categoria'].')"><i class="bx bx-pencil"></i></button>'.
-					'<button class="btn btn-info" onclick="reporte_detalle('.$reg['id_categoria'].')"><i class="fa fa-print"></i></button>'.
-					'<button class="btn btn-danger" onclick="desactivar('.$reg['id_categoria'].')"><i class="bx bx-trash"></i></button>':
-					'<button class="btn btn-warning" onclick="mostrar('.$reg['id_categoria'].')"><i class="bx bx-pencil"></i></button>'.
-					'<button class="btn btn-info" onclick="reporte_detalle('.$reg['id_categoria'].')"><i class="fa fa-print"></i></button>'.
-					'<button class="btn btn-primary" onclick="activar('.$reg['id_categoria'].')"><i class="bx bxs-check-square"></i></button>',
+				"0"=>$reg['id_categoria'],
 				"1"=>$reg['nombre_categoria'],
 				"2"=>($reg['estado_categoria'])?'<span class="badge bg-primary">Activado</span>':
-					'<span class="badge bg-danger">Desactivado</span>'
+					'<span class="badge bg-danger">Desactivado</span>',
+				"3"=>($reg['estado_categoria'])?'<button class="btn btn-warning" onclick="mostrar('.$reg['id_categoria'].')"><i class="bx bx-pencil"></i></button>'.
+				'<button class="btn btn-info" onclick="reporte_detalle('.$reg['id_categoria'].')"><i class="fa fa-print"></i></button>'.
+				'<button class="btn btn-danger" onclick="desactivar('.$reg['id_categoria'].')"><i class="bx bx-trash"></i></button>':
+				'<button class="btn btn-warning" onclick="mostrar('.$reg['id_categoria'].')"><i class="bx bx-pencil"></i></button>'.
+				'<button class="btn btn-info" onclick="reporte_detalle('.$reg['id_categoria'].')"><i class="fa fa-print"></i></button>'.
+				'<button class="btn btn-primary" onclick="activar('.$reg['id_categoria'].')"><i class="bx bxs-check-square"></i></button>'
 				);
 		}
  		$results = array(
