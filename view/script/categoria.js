@@ -38,7 +38,7 @@ function listar(){
             "ajax":
                     {
                         
-                        url: '/ajax/categoria.php?op=0',
+                        url: '../ajax/categoria.php?op=0',
                         type : "get",
                         dataType : "json",						
                         error: function(e){
@@ -61,7 +61,7 @@ function guardaryeditar(e)
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 	$.ajax({
-		url: "/ajax/categoria.php?op=1",
+		url: "../ajax/categoria.php?op=1",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
