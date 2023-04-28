@@ -9,11 +9,10 @@
         <meta content="Mannatthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" href="../public/horizontal/assets/images/favicon.ico">
-
-        <link href="../public/horizontal/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="../public/horizontal/assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="../public/horizontal/assets/css/style.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../public/assets/images/favicon.ico">
+        <link href="../public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../public/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="../public/assets/css/style.css" rel="stylesheet" type="text/css">
 
     </head>
 
