@@ -12,7 +12,9 @@ function init(){
 //Función limpiar
 function limpiar()
 {
-	
+    $("#nombre").val("");
+    $("#descripcion").val("");
+    $("#precio").val("");
 }
 
 
@@ -59,7 +61,6 @@ function guardaryeditar(e)
 	e.preventDefault(); //No se activará la acción predeterminada del evento
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
-    console.log('#formulario');
 	$.ajax({
 		url: "../ajax/articulo.php?op=1",
 	    type: "POST",
@@ -74,6 +75,22 @@ function guardaryeditar(e)
 	    }
 
 	});
+    limpiar();
 }
+
+function mostrar(id_articulo)
+{
+	$.post("../ajax/articulo.php?op=2",{id_articulo : id_articulo}, function(data, status)
+	{
+		data = JSON.parse(data);		
+		console.log('funciona');
+		$("#nombre").val(data.nombre_articulo);
+        $("#descripcion").val(data.descripcion_articulo);
+        $("#precio").val(data.precio_unitario);;
+        $('select[name=categoria]').val(data.id_categoria);
+ 		$("#id_articulo").val(data.id_articulo);
+ 	});
+}
+
 
 init();

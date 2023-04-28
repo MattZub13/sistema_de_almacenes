@@ -3,6 +3,7 @@ require_once "../model/Articulo.php";
 
 $articulo=new Articulo();
 
+$id_articulo=isset($_POST["id_articulo"])?$_POST["id_articulo"]:"";
 $nombre=isset($_POST["nombre"])? $_POST["nombre"]:"";
 $descripcion=isset($_POST["descripcion"])? $_POST["descripcion"]:"";
 $precio=isset($_POST["precio"])? $_POST["precio"]:"";
@@ -17,7 +18,7 @@ switch ($_GET["op"]){
 
  		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
-				"0"=>($reg['estado_articulo'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_articulo'].')">Editar</button>'.
+				"0"=>($reg['estado_articulo'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_articulo'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.
 					'<button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_articulo'].')">Desactivar</i></button>':
 					'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_articulo'].')">Editar</button>'.
 					'<button class="btn btn-purple waves-effect waves-light" onclick="activar('.$reg['id_articulo'].')">Activar</i></button>',
@@ -36,8 +37,21 @@ switch ($_GET["op"]){
  		echo json_encode($results);
 		break;
 	case '1':
+
+		if (empty($id_articulo)){
 			$rspta=$articulo->insertar($nombre, $descripcion, $precio,$categoria);
 			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
+		}else {
+			$rspta=$articulo->editar($id_articulo,$nombre,$descripcion,$precio,$categoria);
+			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
+
+		}
+			
+	break;
+	case '2':
+		$rspta=$articulo->mostrar($idarticulo);
+ 		//Codificar el resultado utilizando json
+ 		echo json_encode($rspta);
 	break;
 
 }
