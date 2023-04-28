@@ -10,9 +10,7 @@
                     <div class="float-right hide-phone">
                         <ul class="list-inline">
                             <li class="list-inline-item mr-3">
-                                <input class="knob" data-width="48" data-height="48" data-linecap=round
-                                                           data-fgColor="#605daf" value="80" data-skin="tron" data-angleOffset="180"
-                                                           data-readOnly=true data-thickness=".1"/>
+                                <input class="knob" data-width="48" data-height="48" data-linecap=round data-fgColor="#605daf" value="80" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1"/>
                             </li>
                             <li class="list-inline-item">
                                         <span class="text-muted">Storage used</span>
@@ -96,4 +94,4 @@
 <?php require_once'../view/footer.php';?>
 <script src="../public/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../public/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="../view/script/articulo.js"></script>
+<script type="text/javascript" src="./script/categoria.js"></script>
