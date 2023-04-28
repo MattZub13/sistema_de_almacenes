@@ -46,13 +46,13 @@
                             <li class="dropdown notification-list hide-phone">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="false" aria-expanded="false">
-                                    English <img src="assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt=""/>
+                                    English <img src="../public/horizontal/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right language-switch">
-                                    <a class="dropdown-item" href="#"><img src="assets/images/flags/italy_flag.jpg" alt="" height="16"/><span> Italian </span></a>
-                                    <a class="dropdown-item" href="#"><img src="assets/images/flags/french_flag.jpg" alt="" height="16"/><span> French </span></a>
-                                    <a class="dropdown-item" href="#"><img src="assets/images/flags/spain_flag.jpg" alt="" height="16"/><span> Spanish </span></a>
-                                    <a class="dropdown-item" href="#"><img src="assets/images/flags/russia_flag.jpg" alt="" height="16"/><span> Russian </span></a>
+                                    <a class="dropdown-item" href="#"><img src="../public/horizontal/assets/images/flags/italy_flag.jpg" alt="" height="16"/><span> Italian </span></a>
+                                    <a class="dropdown-item" href="#"><img src="../public/horizontal/assets/images/flags/french_flag.jpg" alt="" height="16"/><span> French </span></a>
+                                    <a class="dropdown-item" href="#"><img src="../public/horizontal/assets/images/flags/spain_flag.jpg" alt="" height="16"/><span> Spanish </span></a>
+                                    <a class="dropdown-item" href="#"><img src="../public/horizontal/assets/images/flags/russia_flag.jpg" alt="" height="16"/><span> Russian </span></a>
                                 </div>
                             </li>
 
@@ -71,19 +71,19 @@
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon"><img src="assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                        <div class="notify-icon"><img src="../public/horizontal/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Charles M. Jones</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
                                     </a>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon"><img src="assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                        <div class="notify-icon"><img src="../public/horizontal/assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Thomas J. Mimms</b><small class="text-muted">You have 87 unread messages</small></p>
                                     </a>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon"><img src="assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                        <div class="notify-icon"><img src="../public/horizontal/assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Luis M. Konrad</b><small class="text-muted">It is a long established fact that a reader will</small></p>
                                     </a>
 
@@ -137,7 +137,7 @@
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                    aria-haspopup="false" aria-expanded="false">
-                                    <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                                    <img src="../public/horizontal/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown  border-0">
                                     <!-- item-->
@@ -220,7 +220,7 @@
                                             <li><a href="ui-rangeslider.html">Range Slider</a></li>
                                             <li><a href="ui-sweet-alert.html">Sweet-Alert</a></li>                                    
                                             <li><a href="ui-typography.html">Typography</a></li>
-                                            <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
+                                            <li><a href="ui-tabs-accordions.html">Tabs & Accordions</a></li>
                                             <li><a href="ui-video.html">Video</a></li> 
                                         </ul>
                                     </li>
@@ -313,3 +313,43 @@
             </div> <!-- end navbar-custom -->
         </header>
         <!-- End Navigation Bar-->
+
+
+        <div class="wrapper">
+            <div class="container-fluid">
+
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <div class="float-right hide-phone">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item mr-3">
+                                        <input class="knob" data-width="48" data-height="48" data-linecap=round
+                                                           data-fgColor="#605daf" value="80" data-skin="tron" data-angleOffset="180"
+                                                           data-readOnly=true data-thickness=".1"/>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <span class="text-muted">Storage used</span>
+                                        <h6>400GB/524.84GB</h6>
+                                    </li>
+                                </ul>                                
+                            </div>
+                            <h4 class="page-title">Starter</h4>
+                            <div class="btn-group mt-2">
+                                <ol class="breadcrumb hide-phone p-0 m-0">
+                                    <li class="breadcrumb-item"><a href="#">Zoogler</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                    <li class="breadcrumb-item active">Starter</li>
+                                </ol>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title end breadcrumb -->
+
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+            

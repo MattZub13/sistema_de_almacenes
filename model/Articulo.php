@@ -12,46 +12,39 @@ Class Articulo{
 
     public function listar()
     {
-        $sql="SELECT articulo.id_articulo,
-        articulo.nombre,
-        articulo.stock,
-        articulo.descripcion,
-        articulo.estado,
-        articulo.precio_compra,
-        articulo.id_almacen,
-        categoria.nombre
-        FROM Articulo articulo, Categoria categoria
-        WHERE(articulo.id_categoria=categoria.id_categoria)";
-        return ejecutarConsulta($sql);
+      $sql="SELECT a.id_articulo, a.nombre_articulo,a.descripcion_articulo,a.precio_unitario,a.estado_articulo, c.nombre_categoria
+      FROM articulo a, categoria c
+      WHERE(a.id_categoria=c.id_categoria)";
+      return ejecutarConsulta($sql);
     }
 
-    public function insertar($id_articulo,$nombre,$stock,$descripcion,$estado,$precio_compra,$id_almacen,$id_categoria)
+    public function insertar($nombre, $descripcion,$precio_unitario, $id_categoria)
     {
     
-		$sql="insert INTO Articulo VALUES ('$id_articulo','$nombre','$stock','$descripcion','$estado','$precio_compra','$id_almacen','$id_categoria');";
+		$sql="INSERT INTO articulo(nombre_articulo,descripcion_articulo,precio_unitario,id_categoria,id_almacen) VALUES ('$nombre','$descripcion','$precio_unitario',$id_categoria,'1');";
 		return ejecutarConsulta($sql);
 		
     }
 
-    public function editar($id_articulo,$nombre,$stock,$descripcion,$estado,$precio_compra,$id_almacen,$id_categoria)
+    public function editar($id_articulo,$nombre,$descripcion,$precio_unitario,$id_categoria)
     {
     
-		$sql="UPDATE articulo SET nombre='$nombre', idcategoria='$id_categoria', stock='$stock', descripcion='$descripcion'
-        , precio_compra='$precio_compra' WHERE id_articulo='$id_articulo';";
+		$sql="UPDATE articulo SET nombre='$nombre', idcategoria='$id_categoria',descripcion='$descripcion'
+        , precio_unitario='$precio_unitario' WHERE id_articulo='$id_articulo';";
         return ejecutarConsulta($sql);
 		
     }
 
     public function desactivar($id_articulo)
 	{
-		$sql="UPDATE Articulo SET estado='0' WHERE id_articulo='$id_articulo'";
+		$sql="UPDATE articulo SET estado='0' WHERE id_articulo='$id_articulo'";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para activar categorías
 	public function activar($id_articulo)
 	{
-		$sql="UPDATE Articulo SET estado='1' WHERE id_articulo='$id_articulo'";
+		$sql="UPDATE articulo SET estado='1' WHERE id_articulo='$id_articulo'";
 		return ejecutarConsulta($sql);
 	}
 }

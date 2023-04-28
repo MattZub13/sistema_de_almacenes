@@ -9,7 +9,8 @@
             </div>
         </footer>
         <!-- End Footer -->
-
+        
+        <!-- Buttons examples -->
 
         <!-- jQuery  -->
         <script src="../public/horizontal/assets/js/jquery.min.js"></script>
