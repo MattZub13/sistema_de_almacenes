@@ -3,7 +3,7 @@
 //Nos conectamos a la base de datos
 require_once "../config/Conexion.php";
 
-Class Articulo{
+Class Categoria{
 
     public function __construct()
     {
@@ -18,14 +18,10 @@ Class Articulo{
 
     public function insertar($nombre)
 	{
-		$validacion=$this->comprueba_duplicados($nombre,0);
-		if($validacion==0){
-			$sql="INSERT INTO categoria (nombre_categoria)
-			VALUES ('$nombre');";
-			return ejecutarConsulta($sql);
-		}
-		else{return 0;}
+		$sql="INSERT INTO categoria(nombre_categoria)VALUES('$nombre');";
+		return ejecutarConsulta($sql);
 	}
+	
 
     public function editar($id_categoria,$nombre,$estado)
     {
