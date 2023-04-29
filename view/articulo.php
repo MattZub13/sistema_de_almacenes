@@ -73,9 +73,7 @@
                                                                 <label class="col-sm-3 col-form-label">Categoria</label>
                                                                 <div class="col-sm-9">
                                                                     <select class="form-control" id="categoria" name="categoria">
-                                                                        <option>Select</option>
-                                                                        <option value="1">Large select</option>
-                                                                        <option>Small select</option>
+                                                                        
                                                                     </select>
                                                                 </div>
                                                             </div>

@@ -6,6 +6,10 @@ function init(){
     $("#formulario").on("submit",function(e){
 		guardaryeditar(e);	
 	});
+    $.post("../ajax/categoria.php?op=2", function(r){
+	    $("#categoria").html(r);
+		$('#categoria').trigger('change.select2');
+	});
     
 }
 
@@ -70,8 +74,24 @@ function guardaryeditar(e)
 
 	    success: function(datos)
 	    {    
-            console.log(datos);
-            tabla.ajax.reload();
+            mensaje=datos.split(":");
+			if(mensaje[0]=="1"){               
+			swal.fire(
+				'Mensaje de Confirmación',
+				mensaje[1],
+				'success'
+
+				);           
+	          tabla.ajax.reload();
+			}
+			else{
+				Swal.fire({
+					type: 'error',
+					title: 'Error',
+					text: mensaje[1],
+					footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+				});
+			}
 	    }
 
 	});
@@ -80,16 +100,93 @@ function guardaryeditar(e)
 
 function mostrar(id_articulo)
 {
-	$.post("../ajax/articulo.php?op=2",{id_articulo : id_articulo}, function(data, status)
+	$.post("../ajax/articulo.php?op=4",{id_articulo : id_articulo}, function(data, status)
 	{
-		data = JSON.parse(data);		
-		console.log('funciona');
+		data = JSON.parse(data);
+        console.log(data.nombre_articulo);
 		$("#nombre").val(data.nombre_articulo);
         $("#descripcion").val(data.descripcion_articulo);
         $("#precio").val(data.precio_unitario);;
-        $('select[name=categoria]').val(data.id_categoria);
+        $.post("../ajax/categoria.php?op=2", function(r){
+            $("#categoria").html(r);
+            $('#categoria').trigger('change.select2');
+        });
  		$("#id_articulo").val(data.id_articulo);
  	});
+}
+
+//Función para desactivar registros
+function desactivar(id_articulo)
+{
+	swal.fire({
+		title: 'Mensaje de Confirmación',
+		text: "¿Desea desactivar el Registro?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Desactivar'
+	}).then((result) => {
+		if (result.value) {
+			$.post("../ajax/articulo.php?op=2", {id_articulo : id_articulo}, function(e){
+				mensaje=e.split(":");
+					if(mensaje[0]=="1"){  
+						swal.fire(
+							'Mensaje de Confirmación',
+							mensaje[1],
+							'success'
+						);  
+						tabla.ajax.reload();
+					}	
+					else{
+						Swal.fire({
+							type: 'error',
+							title: 'Error',
+							text: mensaje[1],
+							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+						});
+					}			
+        	});	
+		}
+	});   
+}
+
+//Función para activar registros
+function activar(id_articulo)
+{
+	swal.fire({
+		title: 'Mensaje de Confirmación',
+		text: "¿Desea activar el Registro?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Activar'
+	}).then((result) => {
+		if (result.value) {
+			$.post("../ajax/articulo.php?op=3", {id_articulo : id_articulo}, function(e){
+				mensaje=e.split(":");
+					if(mensaje[0]=="1"){  
+						swal.fire(
+							'Mensaje de Confirmación',
+							mensaje[1],
+							'success'
+						);  
+						tabla.ajax.reload();
+					}	
+					else{
+						Swal.fire({
+							type: 'error',
+							title: 'Error',
+							text: mensaje[1],
+							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+						});
+					}			
+        	});	
+		}
+	}); 
 }
 
 

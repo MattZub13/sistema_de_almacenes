@@ -31,6 +31,9 @@
 
         <!-- App js -->
         <script src="../public/assets/js/app.js"></script>
+
+        <!-- Sweet Alerts js -->
+        <script src="../public/assets/plugins/sweet-alert2/sweetalert2.all.min.js"></script>
        
     </body>
 </html>

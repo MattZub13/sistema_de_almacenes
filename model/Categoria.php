@@ -43,4 +43,11 @@ Class Categoria{
 		$sql="UPDATE categoria SET estado_categoria='1' WHERE id_categoria='$id_categoria'";
 		return ejecutarConsulta($sql);
 	}
+
+	public function select()
+	{
+		$sql="SELECT id_categoria, nombre_categoria FROM categoria 
+		WHERE (estado_categoria=1) ORDER BY nombre_categoria ASC";
+		return ejecutarConsulta($sql);		
+	}
 }

@@ -45,13 +45,13 @@
                             <li class="dropdown notification-list hide-phone">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="false" aria-expanded="false">
-                                    English <img src="../public/horizontal/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt=""/>
+                                    English <img src="../public/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right language-switch">
-                                    <a class="dropdown-item" href="#"><img src="../public/horizontal/assets/images/flags/italy_flag.jpg" alt="" height="16"/><span> Italian </span></a>
-                                    <a class="dropdown-item" href="#"><img src="../public/horizontal/assets/images/flags/french_flag.jpg" alt="" height="16"/><span> French </span></a>
-                                    <a class="dropdown-item" href="#"><img src="../public/horizontal/assets/images/flags/spain_flag.jpg" alt="" height="16"/><span> Spanish </span></a>
-                                    <a class="dropdown-item" href="#"><img src="../public/horizontal/assets/images/flags/russia_flag.jpg" alt="" height="16"/><span> Russian </span></a>
+                                    <a class="dropdown-item" href="#"><img src="../public/assets/images/flags/italy_flag.jpg" alt="" height="16"/><span> Italian </span></a>
+                                    <a class="dropdown-item" href="#"><img src="../public/assets/images/flags/french_flag.jpg" alt="" height="16"/><span> French </span></a>
+                                    <a class="dropdown-item" href="#"><img src="../public/assets/images/flags/spain_flag.jpg" alt="" height="16"/><span> Spanish </span></a>
+                                    <a class="dropdown-item" href="#"><img src="../public/assets/images/flags/russia_flag.jpg" alt="" height="16"/><span> Russian </span></a>
                                 </div>
                             </li>
 
@@ -70,19 +70,19 @@
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon"><img src="../public/horizontal/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                        <div class="notify-icon"><img src="../public/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Charles M. Jones</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
                                     </a>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon"><img src="../public/horizontal/assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                        <div class="notify-icon"><img src="../public/assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Thomas J. Mimms</b><small class="text-muted">You have 87 unread messages</small></p>
                                     </a>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon"><img src="../public/horizontal/assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                        <div class="notify-icon"><img src="../public/assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Luis M. Konrad</b><small class="text-muted">It is a long established fact that a reader will</small></p>
                                     </a>
 
@@ -136,7 +136,7 @@
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                    aria-haspopup="false" aria-expanded="false">
-                                    <img src="../public/horizontal/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                                    <img src="../public/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown  border-0">
                                     <!-- item-->

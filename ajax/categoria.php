@@ -40,6 +40,13 @@ switch ($_GET["op"]){
 			$rspta=$categoria->insertar($nombre);
 			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
 	break;
+	case '2':
+		$rspta = $categoria->select();
+		while ($reg = pg_fetch_assoc($rspta))
+		{
+			echo '<option value=' . $reg['id_categoria'] . '>' . $reg['nombre_categoria'] . '</option>';
+		}
+	break;
 
 }
 ?>

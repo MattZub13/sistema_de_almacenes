@@ -49,7 +49,17 @@ switch ($_GET["op"]){
 			
 	break;
 	case '2':
-		$rspta=$articulo->mostrar($idarticulo);
+		$rspta=$articulo->desactivar($id_articulo);
+ 		echo $rspta ? "1:El Artículo fué Desactivado" : "0:El Artículo no fué Desactivado";
+	break;
+
+	case '3':
+		$rspta=$articulo->activar($id_articulo);
+ 		echo $rspta ? "1:El Artículo fué Activado" : "0:El Artículo no fué Activado";
+	break;
+
+	case '4':
+		$rspta=$articulo->mostrar($id_articulo);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;

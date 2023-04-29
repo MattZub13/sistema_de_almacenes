@@ -37,14 +37,14 @@ Class Articulo{
 
     public function desactivar($id_articulo)
 	{
-		$sql="UPDATE articulo SET estado='0' WHERE id_articulo='$id_articulo'";
+		$sql="UPDATE articulo SET estado_articulo='0' WHERE id_articulo='$id_articulo'";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para activar categorías
 	public function activar($id_articulo)
 	{
-		$sql="UPDATE articulo SET estado='1' WHERE id_articulo='$id_articulo'";
+		$sql="UPDATE articulo SET estado_articulo='1' WHERE id_articulo='$id_articulo'";
 		return ejecutarConsulta($sql);
 	}
 
