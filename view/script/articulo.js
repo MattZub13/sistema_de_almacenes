@@ -91,6 +91,7 @@ function guardaryeditar(e)
 					text: mensaje[1],
 					footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
 				});
+				console.log(datos);
 			}
 	    }
 
@@ -102,13 +103,12 @@ function mostrar(id_articulo)
 {
 	$.post("../ajax/articulo.php?op=4",{id_articulo : id_articulo}, function(data, status)
 	{
-		data = JSON.parse(data);
+		data = $.parseJSON(data);
 		$("input[name=nombre]").val(data.nombre_articulo);
         $("#descripcion").val(data.descripcion_articulo);
         $("#precio").val(data.precio_unitario);
-        $.post("../ajax/categoria.php?op=5", function(r){
+        $.post("../ajax/categoria.php?op=2", function(r){
             $("#categoria").html(r);
-            $('select[name=categoria]').val(data.id_categoria);
             $('#categoria').trigger('change.select2');
         });
  		$("#id_articulo").val(data.id_articulo);
