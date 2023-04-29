@@ -52,7 +52,7 @@ Class Articulo{
   {
     $sql="SELECT a.id_articulo, a.nombre_articulo,a.descripcion_articulo,a.precio_unitario,a.estado_articulo, c.nombre_categoria
     FROM articulo a, categoria c
-    WHERE(a.id_categoria=c.id_categoria) AND (id_articulo='$id_articulo')";
+    WHERE(a.id_categoria=c.id_categoria) AND (a.id_articulo='$id_articulo')";
     return ejecutarConsulta($sql);
   }
 }

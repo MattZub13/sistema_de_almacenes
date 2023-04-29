@@ -59,13 +59,13 @@
         </div>
     <br>
     <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
 
-                                <h4>Tabla de Datos</h4>
+                    <h4>Tabla de Datos</h4>
 
-                                <table class="table mb-0" id="tableLista">
+                    <table class="table mb-0" id="tableLista">
                                     <thead>
                                       <tr>
                                         <th>ID</th>
@@ -82,12 +82,11 @@
                                         <td>asd</td>
                                       </tr>
                                     </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div> <!-- end col -->
-                </div> <!-- end row -->
+                        </table>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
 </div>
         <!-- end wrapper -->
 

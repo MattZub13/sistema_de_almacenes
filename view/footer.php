@@ -29,6 +29,10 @@
         <script src="../public/assets/plugins/chart.js/chart.min.js"></script>
         <script src="../public/assets/pages/dashboard.js"></script>
 
+        <!-- Required datatable js -->
+        <script src="../public/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../public/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+
         <!-- App js -->
         <script src="../public/assets/js/app.js"></script>
 
