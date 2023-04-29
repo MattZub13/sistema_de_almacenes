@@ -9,7 +9,7 @@
                         <div class="col-sm-6 col-md-3  mt-4">
                                         <div class="text-center">
                                             <!-- Small modal -->
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Center modal</button>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Nuevo Articulo</button>
                                         </div>
                         </div>
                     </div>
@@ -19,18 +19,18 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Articulo</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+                                <h5 class="modal-title" id="exampleModalLabel">Nuevo Articulo</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                             </div>
                             <div class="modal-body">
                                 <form name="formulario" id="formulario" method="POST">
                                     <div class="form-group row">
-                                            <label for="nombre" class="col-sm-3 col-form-label">Nombre del Articulo: </label>
+                                        <label for="nombre" class="col-sm-3 col-form-label">Nombre del Articulo: </label>
                                         <div class="col-sm-9 mt-2">
-                                                                    <input type="hidden" name="id_articulo" id="id_articulo">
-                                                                    <input class="form-control" type="text"  name="nombre" id="nombre">
+                                            <input type="hidden" name="id_articulo" id="id_articulo">
+                                            <input class="form-control" type="text"  name="nombre" id="nombre">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -48,9 +48,9 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Categoria</label>
                                         <div class="col-sm-9">
-                                                                    <select class="form-control" id="categoria" name="categoria">
-                                                                        
-                                                                    </select>
+                                            <select class="form-control" id="categoria" name="categoria">
+                                                <option  disabled selected value> -- Seleccione una opción -- </option>                     
+                                            </select>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary" type="submit" id="btnGuardar"> Guardar</button>
