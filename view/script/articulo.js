@@ -2,14 +2,15 @@ var tabla;
 
 function init(){
     //Para validación
+	$.post("../ajax/categoria.php?op=5", function(r){
+	    $("#categoria").html(r);
+		$('#categoria').trigger('change.select2');
+	});
 	listar();
     $("#formulario").on("submit",function(e){
 		guardaryeditar(e);	
 	});
-    $.post("../ajax/categoria.php?op=2", function(r){
-	    $("#categoria").html(r);
-		$('#categoria').trigger('change.select2');
-	});
+   
     
 }
 
@@ -107,10 +108,10 @@ function mostrar(id_articulo)
 		$("input[name=nombre]").val(data.nombre_articulo);
         $("#descripcion").val(data.descripcion_articulo);
         $("#precio").val(data.precio_unitario);
-        $.post("../ajax/categoria.php?op=2", function(r){
-            $("#categoria").html(r);
-            $('#categoria').trigger('change.select2');
-        });
+        $.post("../ajax/categoria.php?op=5", function(r){
+			$("#categoria").html(r);
+			$('#categoria').trigger('change.select2');
+		});
  		$("#id_articulo").val(data.id_articulo);
  	});
 }

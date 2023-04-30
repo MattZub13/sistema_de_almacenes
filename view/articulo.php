@@ -49,7 +49,6 @@
                                         <label class="col-sm-3 col-form-label">Categoria</label>
                                         <div class="col-sm-9">
                                             <select class="form-control" id="categoria" name="categoria">
-                                                <option  disabled selected value> -- Seleccione una opción -- </option>                     
                                             </select>
                                         </div>
                                     </div>

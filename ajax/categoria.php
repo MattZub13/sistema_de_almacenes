@@ -53,6 +53,8 @@ switch ($_GET["op"]){
 	case '4':
 		$rspta=$categoria->mostrar($id_categoria);
 		echo json_encode($rspta);
+	break;
+	
 	case '5':
 		$rspta = $categoria->select();
 		while ($reg = pg_fetch_assoc($rspta))

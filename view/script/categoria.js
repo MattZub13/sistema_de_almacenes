@@ -100,6 +100,7 @@ function mostrar(id_categoria)
 	$.post("../ajax/categoria.php?op=4",{id_categoria : id_categoria}, function(data, status)
 	{
 		data = JSON.parse(data);
+		console.log(data);
 		$("#nombre").val(data.nombre_categoria);
  		$("#id_categoria").val(data.id_categoria);
  	});

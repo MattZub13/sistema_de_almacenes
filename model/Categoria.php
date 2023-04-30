@@ -57,7 +57,7 @@ Class Categoria{
 
 	public function mostrar($id_categoria)
 	{
-		$sql="SELECT id_categoria, nombre_categoria, estado_categoria FROM categoria WHERE id_categoria='$id_categoria'";
+		$sql="SELECT * FROM categoria WHERE id_categoria='$id_categoria';";
 		return ejecutarConsultaSimpleFila($sql);
 	}
 
