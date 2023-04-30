@@ -16,16 +16,13 @@ switch ($_GET["op"]){
 
  		while ($reg = pg_fetch_assoc($rspta)){			
 			$data[]=array(
-				"0"=>$reg['id_categoria'],
+				"0"=>($reg['estado_categoria'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_categoria'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.
+				'<button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_categoria'].')">Desactivar</i></button>':
+				'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_categoria'].')">Editar</button>'.
+				'<button class="btn btn-purple waves-effect waves-light" onclick="activar('.$reg['id_categoria'].')">Activar</i></button>',
 				"1"=>$reg['nombre_categoria'],
-				"2"=>($reg['estado_categoria'])?'<span class="badge bg-primary">Activado</span>':
-					'<span class="badge bg-danger">Desactivado</span>',
-				"3"=>($reg['estado_categoria'])?'<button class="btn btn-warning" onclick="mostrar('.$reg['id_categoria'].')"><i class="bx bx-pencil"></i></button>'.
-				'<button class="btn btn-info" onclick="reporte_detalle('.$reg['id_categoria'].')"><i class="fa fa-print"></i></button>'.
-				'<button class="btn btn-danger" onclick="desactivar('.$reg['id_categoria'].')"><i class="bx bx-trash"></i></button>':
-				'<button class="btn btn-warning" onclick="mostrar('.$reg['id_categoria'].')"><i class="bx bx-pencil"></i></button>'.
-				'<button class="btn btn-info" onclick="reporte_detalle('.$reg['id_categoria'].')"><i class="fa fa-print"></i></button>'.
-				'<button class="btn btn-primary" onclick="activar('.$reg['id_categoria'].')"><i class="bx bxs-check-square"></i></button>'
+				"2"=>($reg['estado_categoria'])?'<span class="badge badge-pill badge-outline-info">Activado</span>':
+					'<span class="badge bg-danger">Desactivado</span>'
 				);
 		}
  		$results = array(
@@ -37,16 +34,31 @@ switch ($_GET["op"]){
 
 	break;
 	case '1':
-			$rspta=$categoria->insertar($nombre);
-			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
+			if(empty($id_categoria)){
+				$rspta=$categoria->insertar($nombre);
+				echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
+			}else{
+				$rspta=$categoria->editar($id_categoria,$nombre);
+				echo $rspta ? "1:Categoria Actualizada" : "0:Categoria no Actualizada";
+			}
 	break;
 	case '2':
+		$rspta=$categoria->desactivar($id_categoria);
+		echo $rspta ? "1:La Categoria fué Desactivado" : "0:La Categoria no fué Desactivado";
+	break;
+	case '3':
+		$rspta=$categoria->activar($id_categoria);
+		echo $rspta ? "1:La Categoria fué Activada" : "0:La Categoria no fué Activada";
+	break;
+	case '4':
+		$rspta=$categoria->mostrar($id_categoria);
+		echo json_encode($rspta);
+	case '5':
 		$rspta = $categoria->select();
 		while ($reg = pg_fetch_assoc($rspta))
 		{
 			echo '<option value=' . $reg['id_categoria'] . '>' . $reg['nombre_categoria'] . '</option>';
 		}
 	break;
-
 }
 ?>
