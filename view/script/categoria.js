@@ -13,6 +13,7 @@ function init(){
 function limpiar()
 {
 	$("#nombre").val("");
+    $("#id_categoria").val("");
 }
 
 
@@ -69,11 +70,111 @@ function guardaryeditar(e)
 
 	    success: function(datos)
 	    {    
-            console.log(datos);
-            tabla.ajax.reload();
+            mensaje=datos.split(":");
+			if(mensaje[0]=="1"){               
+			swal.fire(
+				'Mensaje de Confirmación',
+				mensaje[1],
+				'success'
+
+				);           
+	          tabla.ajax.reload();
+			}
+			else{
+				Swal.fire({
+					type: 'error',
+					title: 'Error',
+					text: mensaje[1],
+					footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+				});
+				console.log(datos);
+			}
 	    }
 
 	});
+	limpiar();
 }
 
+function mostrar(id_categoria)
+{
+	$.post("../ajax/categoria.php?op=4",{id_categoria : id_categoria}, function(data, status)
+	{
+		data = JSON.parse(data);
+		$("#nombre").val(data.nombre_categoria);
+ 		$("#id_categoria").val(data.id_categoria);
+ 	});
+}
+
+function desactivar(id_categoria)
+{
+	swal.fire({
+		title: 'Mensaje de Confirmación',
+		text: "¿Desea desactivar el Registro?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Desactivar'
+	}).then((result) => {
+		if (result.value) {
+			$.post("../ajax/categoria.php?op=2", {id_categoria : id_categoria}, function(e){
+				mensaje=e.split(":");
+					if(mensaje[0]=="1"){  
+						swal.fire(
+							'Mensaje de Confirmación',
+							mensaje[1],
+							'success'
+						);  
+						tabla.ajax.reload();
+					}	
+					else{
+						Swal.fire({
+							type: 'error',
+							title: 'Error',
+							text: mensaje[1],
+							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+						});
+					}			
+        	});	
+		}
+	});   
+}
+
+
+function activar(id_categoria)
+{
+	swal.fire({
+		title: 'Mensaje de Confirmación',
+		text: "¿Desea activar el Registro?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Activar'
+	}).then((result) => {
+		if (result.value) {
+			$.post("../ajax/categoria.php?op=3", {id_categoria : id_categoria}, function(e){
+				mensaje=e.split(":");
+					if(mensaje[0]=="1"){  
+						swal.fire(
+							'Mensaje de Confirmación',
+							mensaje[1],
+							'success'
+						);  
+						tabla.ajax.reload();
+					}	
+					else{
+						Swal.fire({
+							type: 'error',
+							title: 'Error',
+							text: mensaje[1],
+							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+						});
+					}			
+        	});	
+		}
+	}); 
+}
 init();
