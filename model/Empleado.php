@@ -54,4 +54,16 @@ Class Empleado{
     $sql="SELECT * FROM empleado WHERE id_empleado = '$id_empleado'";
     return ejecutarConsultaSimpleFila($sql);
   }
+
+  public function comprobar($correo,$password)
+  {
+    $sql="SELECT correo_empleado,password from empleado where correo_empleado='$correo' AND password='$password';";
+    $rspta= ejecutarConsultaSimpleFila($sql);
+    if ($rspta==false) {
+      return 0;
+    } else {
+      return 1;
+    }
+    
+  }
 }

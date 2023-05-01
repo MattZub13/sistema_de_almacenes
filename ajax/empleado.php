@@ -8,6 +8,7 @@ $nombre=isset($_POST["nombre"])? $_POST["nombre"]:"";
 $apellidop=isset($_POST["apellidop"])? $_POST["apellidop"]:"";
 $apellidom=isset($_POST["apellidom"])? $_POST["apellidom"]:"";
 $correo=isset($_POST["correo"])? $_POST["correo"]:"";
+$password=isset($_POST["password"])? $_POST["password"]:"";
 
 
 switch ($_GET["op"]){
@@ -64,6 +65,10 @@ switch ($_GET["op"]){
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
+	case '5':
+		$rspta=$empleado->comprobar($correo,$password);
+ 		//Codificar el resultado utilizando json
+ 		echo $rspta;
+	break;
 
 }
-?>
