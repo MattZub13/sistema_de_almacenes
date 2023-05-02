@@ -9,6 +9,7 @@ $apellidop=isset($_POST["apellidop"])? $_POST["apellidop"]:"";
 $apellidom=isset($_POST["apellidom"])? $_POST["apellidom"]:"";
 $correo=isset($_POST["correo"])? $_POST["correo"]:"";
 $password=isset($_POST["password"])? $_POST["password"]:"";
+$oficina=isset($_POST["oficina"])? $_POST["oficina"]:"";
 
 
 switch ($_GET["op"]){
@@ -27,7 +28,8 @@ switch ($_GET["op"]){
                 "2"=>$reg['apellido_paterno'],
                 "3"=>$reg['apellido_materno'],
                 "4"=>$reg['correo_empleado'],
-				"5"=>($reg['estado_empleado'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
+				"5"=>$reg['nombre_oficina'],
+				"6"=>($reg['estado_empleado'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
 					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
 				);
 		}
@@ -41,10 +43,10 @@ switch ($_GET["op"]){
 	case '1':
 
 		if (empty($id_empleado)){
-			$rspta=$empleado->insertar($nombre, $apellidop, $apellidom,$correo);
+			$rspta=$empleado->insertar($nombre, $apellidop, $apellidom,$correo,$oficina,$password);
 			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
 		}else {
-			$rspta=$empleado->editar($id_empleado,$nombre,$apellidop,$apellidom,$correo);
+			$rspta=$empleado->editar($id_empleado,$nombre,$apellidop,$apellidom,$correo,$oficina,$password);
 			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
 
 		}

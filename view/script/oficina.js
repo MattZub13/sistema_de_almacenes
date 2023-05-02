@@ -2,12 +2,11 @@ var tabla;
 
 function init(){
     //Para validación
-	$.post("../ajax/oficina.php?op=5", function(r){
-		console.log(r);
-	    $("#oficina").html(r);
-		$('#oficina').trigger('change.select2');
+	$.post("../ajax/oficina.php?op=0", function(r){
+        console.log(r);
+	    $("#oficina_row").html(r);
+		$('#oficina_row').trigger('change.select2');
 	});
-	listar();
     $("#formulario").on("submit",function(e){
 		guardaryeditar(e);	
 	});
@@ -18,11 +17,9 @@ function init(){
 //Función limpiar
 function limpiar()
 {
-
     $("#nombre").val("");
-        $("#apellidop").val("");
-        $("#apellidom").val("");
-        $("#correo").val("");
+    $("#descripcion").val("");
+    $("#precio").val("");
 }
 
 
@@ -47,7 +44,7 @@ function listar(){
                     ],
             "ajax":
                     {
-                        url: '../ajax/empleado.php?op=0',
+                        url: '../ajax/articulo.php?op=0',
                         type : "get",
                         dataType : "json",						
                         error: function(e){
@@ -70,7 +67,7 @@ function guardaryeditar(e)
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 	$.ajax({
-		url: "../ajax/empleado.php?op=1",
+		url: "../ajax/articulo.php?op=1",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -103,21 +100,24 @@ function guardaryeditar(e)
     limpiar();
 }
 
-function mostrar(id_empleado)
+function mostrar(id_articulo)
 {
-	$.post("../ajax/empleado.php?op=4",{id_empleado : id_empleado}, function(data, status)
+	$.post("../ajax/articulo.php?op=4",{id_articulo : id_articulo}, function(data, status)
 	{
 		data = $.parseJSON(data);
-		$("#nombre").val(data.nombre);
-        $("#apellidop").val(data.apellido_paterno);
-        $("#apellidom").val(data.apellido_materno);
-        $("#correo").val(data.correo_empleado);
- 		$("#id_empleado").val(data.id_empleado);
+		$("input[name=nombre]").val(data.nombre_articulo);
+        $("#descripcion").val(data.descripcion_articulo);
+        $("#precio").val(data.precio_unitario);
+        $.post("../ajax/categoria.php?op=5", function(r){
+			$("#categoria").html(r);
+			$('#categoria').trigger('change.select2');
+		});
+ 		$("#id_articulo").val(data.id_articulo);
  	});
 }
 
 //Función para desactivar registros
-function desactivar(id_empleado)
+function desactivar(id_articulo)
 {
 	swal.fire({
 		title: 'Mensaje de Confirmación',
@@ -130,7 +130,7 @@ function desactivar(id_empleado)
 		confirmButtonText: 'Desactivar'
 	}).then((result) => {
 		if (result.value) {
-			$.post("../ajax/empleado.php?op=2", {id_empleado : id_empleado}, function(e){
+			$.post("../ajax/articulo.php?op=2", {id_articulo : id_articulo}, function(e){
 				mensaje=e.split(":");
 					if(mensaje[0]=="1"){  
 						swal.fire(
@@ -154,7 +154,7 @@ function desactivar(id_empleado)
 }
 
 //Función para activar registros
-function activar(id_empleado)
+function activar(id_articulo)
 {
 	swal.fire({
 		title: 'Mensaje de Confirmación',
@@ -167,7 +167,7 @@ function activar(id_empleado)
 		confirmButtonText: 'Activar'
 	}).then((result) => {
 		if (result.value) {
-			$.post("../ajax/empleado.php?op=3", {id_empleado : id_empleado}, function(e){
+			$.post("../ajax/articulo.php?op=3", {id_articulo : id_articulo}, function(e){
 				mensaje=e.split(":");
 					if(mensaje[0]=="1"){  
 						swal.fire(

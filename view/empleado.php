@@ -51,6 +51,19 @@
                                                 <input class="form-control" type="email" name="correo" id="correo">
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="password" class="col-sm-2 col-form-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="password"  id="password" name="password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">oficina</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" id="oficina" name="oficina">
+                                            </select>
+                                        </div>
+                                    </div>
                                     
                                     <button class="btn btn-primary" type="submit" id="btnGuardar"> Guardar</button>
                                 </form>
@@ -74,6 +87,7 @@
                                             <th>Apellido Paterno</th>
                                             <th>Apellido Materno</th>
                                             <th>Correo</th>
+                                            <th>Oficina</th>
                                             <th>Estado</th>
                                         </tr>
                                         </thead>
