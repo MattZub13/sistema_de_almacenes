@@ -57,6 +57,12 @@ Class Empleado{
     return ejecutarConsultaSimpleFila($sql);
   }
 
+  public function select()
+  {
+    $sql="SELECT nombre,apellido_paterno,apellido_materno FROM empleado;";
+    return ejecutarConsulta($sql);
+  }
+
   public function comprobar($correo,$password)
   {
     $sql="SELECT correo_empleado,password from empleado where correo_empleado='$correo' AND password='$password';";

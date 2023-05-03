@@ -69,4 +69,3 @@ Class Oficina{
 		return ejecutarConsulta($sql);		
 	}
 }
-

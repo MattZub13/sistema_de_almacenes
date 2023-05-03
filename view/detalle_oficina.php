@@ -5,41 +5,31 @@
     <div class="card">
             <div class="card-header">
                 Informacion
+                <div id="prueba">
+                </div>
             </div>
             <div class="card-body">
                 <blockquote class=" quote">
-                    <p class="font-13 text-muted">Descripcion de la oficina donde esta a que telefono llamar etc.</p>
+                    <p class="font-13 text-muted" id="descripcion"></p>
                 </blockquote>
             </div>
         </div>
         <br>
-        <div class="table-responsive ">
-            <table class="table mb-0 table-centered">
-                <thead>
-                    <tr>
-                        <th>Empleado</th>                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            Nombre del empleado
-                        </td>
-                                                
-                    </tr>
-                    <tr>
-                        <td>
-                            Se buscara concatenar los distintos campos de nombres y apellido
-                        </td>
-                                                
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        
+                        <div class="card">
+                            <div class="card-header">
+                                Empleado
+                            </div>
+                            <div class="card-body" id="empleados">
+                            </div>
+                        </div>
+                   
+
+        
     </div>
 
     <div class="col-lg-8">
-        <h1 class="text-center">Titulo de la oficina</h1>
+        <h1 class="text-center" id="titulo" name="titulo"></h1>
         <br>
         <div class="card-body">
 
@@ -131,4 +121,4 @@
 
 <?php require_once'../view/footer.php';?>
 
-<script src="../view/script/oficina.js"></script>
+<script src="../view/script/detalle_oficina.js"></script>

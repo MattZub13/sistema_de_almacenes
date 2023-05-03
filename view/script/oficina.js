@@ -11,9 +11,17 @@ function init(){
     
 }
 
-function obtener_valor(valor) {
-	return valor;
-}
+$(document).ready(function() {
+	$("#oficina_detalle").click(function(event) {
+	  // Prevenir que se siga la URL por defecto de la etiqueta "a"
+	  event.preventDefault();
+	  // Obtener el valor del atributo "value" de la etiqueta "a"
+	  const valor = $(this).attr("value");
+	  console.log(valor);
+	  // Redirigir a la siguiente página y pasar el valor como parámetro de la URL
+	  window.location.href = "../view/detalle_oficina.php?id_oficina=" + valor;
+	});
+  });
 
 //Función limpiar
 function limpiar()

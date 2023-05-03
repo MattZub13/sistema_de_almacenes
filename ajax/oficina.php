@@ -19,7 +19,7 @@ switch ($_GET["op"]){
             <div class="card card-body text-center">
                 <h4 class="card-title font-20 mt-0">'.$reg['nombre_oficina'].'</h4>
                 <p class="font-13 text-muted">'.$reg['descripcion_oficina'].' </p>
-                <a href="../view/detalle_oficina.php" onclick="obtener_valor('.$reg['id_oficina'].')" id="oficina_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
+                <a href="../view/detalle_oficina.php?id_oficina='.$reg['id_oficina'].'" value="'.$reg['id_oficina'].'" id="oficina_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
             </div>
         </div>';
 		}
@@ -58,6 +58,7 @@ switch ($_GET["op"]){
 			echo '<option value=' . $reg['id_oficina'] . '>' . $reg['nombre_oficina'] . '</option>';
 		}
 	break;
+	
 
 }
 ?>

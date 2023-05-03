@@ -72,5 +72,13 @@ switch ($_GET["op"]){
  		//Codificar el resultado utilizando json
  		echo $rspta;
 	break;
+	case '6':
+		$rspta = $empleado->select();
+		while ($reg = pg_fetch_assoc($rspta))
+		{
+			echo '<p>'.$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno'].'</p><br>';
+		}
+		break;
+	break;
 
 }
