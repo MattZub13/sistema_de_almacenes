@@ -1,17 +1,18 @@
 var tabla;
-
 function init(){
-    //Para validación
+    
 	$.post("../ajax/oficina.php?op=0", function(r){
-        console.log(r);
 	    $("#oficina_row").html(r);
 		$('#oficina_row').trigger('change.select2');
 	});
     $("#formulario").on("submit",function(e){
 		guardaryeditar(e);	
 	});
-   
     
+}
+
+function obtener_valor(valor) {
+	return valor;
 }
 
 //Función limpiar

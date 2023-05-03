@@ -19,7 +19,7 @@ switch ($_GET["op"]){
             <div class="card card-body text-center">
                 <h4 class="card-title font-20 mt-0">'.$reg['nombre_oficina'].'</h4>
                 <p class="font-13 text-muted">'.$reg['descripcion_oficina'].' </p>
-                <a href="#" class="btn btn-primary waves-effect waves-light">Detalle</a>
+                <a href="../view/detalle_oficina.php" onclick="obtener_valor('.$reg['id_oficina'].')" id="oficina_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
             </div>
         </div>';
 		}

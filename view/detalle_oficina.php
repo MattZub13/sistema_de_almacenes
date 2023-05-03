@@ -130,3 +130,5 @@
 
 
 <?php require_once'../view/footer.php';?>
+
+<script src="../view/script/oficina.js"></script>
