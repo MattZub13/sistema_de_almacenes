@@ -48,12 +48,6 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <br><table class="table table-bordered dt-responsive nowrap" id="tbllistado" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                         <tr>
