@@ -52,4 +52,10 @@ Class Proveedor{
       FROM proveedor WHERE id_proveedor='$id_proveedor';";
     return ejecutarConsultaSimpleFila($sql);
   }
+
+  public function select()
+	{
+		$sql="SELECT id_proveedor,nombre_proveedor FROM proveedor";
+		return ejecutarConsulta($sql);		
+	}
 }

@@ -64,6 +64,13 @@ switch ($_GET["op"]){
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
+	case '5':
+		$rspta = $proveedor->select();
+		while ($reg = pg_fetch_assoc($rspta))
+		{
+			echo '<option value=' . $reg['id_proveedor'] . '>' . $reg['nombre_proveedor'] . '</option>';
+		}
+	break;
 
 }
 ?>
