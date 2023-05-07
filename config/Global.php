@@ -12,7 +12,7 @@ define("DB_USERNAME", "postgres");
 //Contraseña del usuario de la base de datos
 //La contrasenia debe ser diferente para cada uno de ustedes procurense
 //que cuando esten subiendo esto al github no subir el archivo de Global.php
-define("DB_PASSWORD", "anze1010");
+define("DB_PASSWORD", "root");
 
 //definimos la codificación de los caracteres
 define("DB_ENCODE","utf8");

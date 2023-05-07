@@ -1,19 +1,34 @@
 var tabla;
 
+document.addEventListener('DOMContentLoaded', function() {
+    var fechaInput = document.getElementById('fecha');
+    var fechaHoy = new Date().toISOString().split('T')[0];
+    fechaInput.value = fechaHoy;
+});
+
 function init(){
     //Para validación
+	$.post("../ajax/surtidor.php?op=5", function(r){
+	    $("#ubicacion").html(r);
+		$('#ubicacion').trigger('change.select2');
+	});
+    $.post("../ajax/vehiculo.php?op=5", function(r){
+	    $("#tipo").html(r);
+		$('#tipo').trigger('change.select2');
+	});
 	listar();
     $("#formulario").on("submit",function(e){
 		guardaryeditar(e);	
 	});
+   
     
 }
 
 //Función limpiar
 function limpiar()
 {
-    $("#id_vehiculo").val("");
     $("#placa").val("");
+
 }
 
 
@@ -38,8 +53,7 @@ function listar(){
                     ],
             "ajax":
                     {
-                        
-                        url: '../ajax/vehiculo.php?op=0',
+                        url: '../ajax/vehiculo_surtidor.php?op=0',
                         type : "get",
                         dataType : "json",						
                         error: function(e){
@@ -62,7 +76,7 @@ function guardaryeditar(e)
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 	$.ajax({
-		url: "../ajax/vehiculo.php?op=1",
+		url: "../ajax/vehiculo_surtidor.php?op=1",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -92,90 +106,27 @@ function guardaryeditar(e)
 	    }
 
 	});
-	limpiar();
+    limpiar();
 }
 
-function mostrar(id_vehiculo)
+function mostrar(id_vs)
 {
-	$.post("../ajax/vehiculo.php?op=4",{id_vehiculo : id_vehiculo}, function(data, status)
+	$.post("../ajax/vehiculo_surtidor.php?op=2",{id_vs : id_vs}, function(data, status)
 	{
-		data = JSON.parse(data);
-		console.log(data);
-		$("#placa").val(data.placa_vehiculo);
- 		$("#id_vehiculo").val(data.id_vehiculo);
+		data = $.parseJSON(data);
+        $.post("../ajax/surtidor.php?op=5", function(r){
+			$("#ubicacion").html(r);
+			$('#ubicacion').trigger('change.select2');
+		});
+        $.post("../ajax/vehiculo.php?op=5", function(r){
+			$("#tipo").html(r);
+			$('#tipo').trigger('change.select2');
+		});
+ 		
+         $("#id_vs").val(data.id_vs);
+		$("#fecha").val(data.fecha_limite);
  	});
 }
 
-function desactivar(id_vehiculo)
-{
-	swal.fire({
-		title: 'Mensaje de Confirmación',
-		text: "¿Desea desactivar el Registro?",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Desactivar'
-	}).then((result) => {
-		if (result.value) {
-			$.post("../ajax/vehiculo.php?op=2", {id_vehiculo : id_vehiculo}, function(e){
-				mensaje=e.split(":");
-					if(mensaje[0]=="1"){  
-						swal.fire(
-							'Mensaje de Confirmación',
-							mensaje[1],
-							'success'
-						);  
-						tabla.ajax.reload();
-					}	
-					else{
-						Swal.fire({
-							type: 'error',
-							title: 'Error',
-							text: mensaje[1],
-							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
-						});
-					}			
-        	});	
-		}
-	});   
-}
 
-
-function activar(id_vehiculo)
-{
-	swal.fire({
-		title: 'Mensaje de Confirmación',
-		text: "¿Desea activar el Registro?",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Activar'
-	}).then((result) => {
-		if (result.value) {
-			$.post("../ajax/vehiculo.php?op=3", {id_vehiculo : id_vehiculo}, function(e){
-				mensaje=e.split(":");
-					if(mensaje[0]=="1"){  
-						swal.fire(
-							'Mensaje de Confirmación',
-							mensaje[1],
-							'success'
-						);  
-						tabla.ajax.reload();
-					}	
-					else{
-						Swal.fire({
-							type: 'error',
-							title: 'Error',
-							text: mensaje[1],
-							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
-						});
-					}			
-        	});	
-		}
-	}); 
-}
 init();
