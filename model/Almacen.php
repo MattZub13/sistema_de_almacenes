@@ -16,8 +16,6 @@ Class Almacen
         return ejecutarConsulta($sql);
     }
 
-    public function insertar($nombre, $descripcion,$precio_unitario, $id_categoria)
-    {
 }
 
 ?>

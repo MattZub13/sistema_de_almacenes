@@ -13,9 +13,13 @@ function init(){
 function limpiar()
 {
     $("#id_surtidor").val("");
-    $("#ubicacion_surtidor").val("");
-    $("#telefono_surtidor").val("");
+    $("#ubicacion").val("");
+    $("#telefono").val("");
 }
+
+
+
+
 
 function listar(){
     tabla=$('#tableLista').DataTable(
@@ -49,6 +53,8 @@ function listar(){
         }
     );
 }
+
+//Función para guardar o editar
 
 function guardaryeditar(e)
 {
@@ -90,17 +96,16 @@ function guardaryeditar(e)
 	limpiar();
 }
 
-
 function mostrar(id_surtidor)
 {
 	$.post("../ajax/surtidor.php?op=4",{id_surtidor : id_surtidor}, function(data, status)
 	{
 		data = JSON.parse(data);
 		console.log(data);
-        $("#id_surtidor").val(data.id_surtidor);
-		$("#ubicacion").val(data.ubicacion_surtidor);
         $("#telefono").val(data.telefono_surtidor);
-
+		$("#ubicacion").val(data.ubicacion_surtidor);
+        
+ 		$("#id_surtidor").val(data.id_surtidor);
  	});
 }
 
@@ -139,6 +144,7 @@ function desactivar(id_surtidor)
 		}
 	});   
 }
+
 
 function activar(id_surtidor)
 {
