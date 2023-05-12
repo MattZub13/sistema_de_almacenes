@@ -65,7 +65,9 @@
                                         </div>
                                     </div>
                                     
-                                    <button class="btn btn-primary" type="submit" id="btnGuardar"> Guardar</button>
+                                    <div>
+                                        <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardar"></i>Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div><!-- /.modal-content -->
