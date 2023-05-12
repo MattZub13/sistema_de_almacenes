@@ -79,8 +79,11 @@ function guardaryeditar(e)
 				mensaje[1],
 				'success'
 
-				);           
-	          tabla.ajax.reload();
+				).then(function() {
+					tabla.ajax.reload();
+					limpiar();
+					location.reload(); // Recargar la página
+				});
 			}
 			else{
 				Swal.fire({
@@ -94,7 +97,6 @@ function guardaryeditar(e)
 	    }
 
 	});
-    limpiar();
 }
 
 //Función para desactivar registros

@@ -78,22 +78,24 @@ function guardaryeditar(e)
 				mensaje[1],
 				'success'
 
-				);           
-	          tabla.ajax.reload();
+				).then(function() {
+					tabla.ajax.reload();
+					limpiar();
+					location.reload(); // Recargar la página
+				});
 			}
 			else{
 				Swal.fire({
 					type: 'error',
 					title: 'Error',
 					text: mensaje[1],
-					footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+					footer: 'Verifique la información de Surtidor, en especial que la información no fué ingresada previamente a la Base de Datos.'
 				});
 				console.log(datos);
 			}
 	    }
 
 	});
-	limpiar();
 }
 
 function mostrar(id_surtidor)

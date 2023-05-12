@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <!-- end page title end breadcrumb -->
-                <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal fade bs-example-modal-center" id="modal-body" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -24,7 +24,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" >
                                 <form name="formulario" id="formulario" method="POST">
                                 <input type="hidden" name="id_sub_almacen" id="id_sub_almacen">
                                     <label for="direccion">Ingrese la direccion del sub-almacen</label>
