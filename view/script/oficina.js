@@ -109,7 +109,7 @@ function guardaryeditar(e)
 	    }
 
 	});
-    limpiar();
+
 }
 
 function mostrar(id_articulo)
