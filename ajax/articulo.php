@@ -63,6 +63,13 @@ switch ($_GET["op"]){
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
+	case '5':
+		$rspta = $articulo->select();
+		while ($reg = pg_fetch_assoc($rspta))
+		{
+			echo '<option value=' . $reg['id_articulo'] . '>' . $reg['nombre_articulo'] . '</option>';
+		}
+	break;
 
 }
 ?>

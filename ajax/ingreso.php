@@ -16,7 +16,7 @@ switch ($_GET["op"]){
 
  		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
-				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_ingreso'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>',
+				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_ingreso'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.'<button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" onclick="detalle('.$reg['id_ingreso'].')" data-target=".bs-example-modal-sm">detalle</button>',
 				"1"=>$reg['nombre_proveedor'],
                 "2"=>$reg['fecha_ingreso'],
 				);
@@ -45,6 +45,23 @@ switch ($_GET["op"]){
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
+	case '5':
+//Recibimos el idingreso
+		$id=$_GET['id_ingreso'];
+
+		$rspta = $ingreso->detalle($id);
+		$total=0;
+		echo '<thead>
+									<th>Artículo</th>
+									<th>Cantidad</th>
+								</thead>';
+
+		while ($reg = pg_fetch_assoc($rspta)){	
+					echo '<tr class="filas">
+					<td>'.$reg['nombre_articulo'].'</td>
+					<td>'.$reg['cantidad'].'</td></tr>';
+				}
+		break;
 
 }
 ?>

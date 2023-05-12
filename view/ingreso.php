@@ -38,12 +38,51 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary" type="submit" id="btnGuardar"> Guardar</button>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Articulo</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="id_articulo" name="id_articulo">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="cantidad" class="col-sm-3 col-form-label">Cantidad: </label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="number" min="0" name="cantidad" id="cantidad">
+                                        </div>
+                                    </div>
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <td>Articulo</td>
+                                                <td>Cantidad</td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    
+                                    <div>
+                                        <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardar"></i>Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+
+                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title mt-0" id="mySmallModalLabel">Small modal</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <table class="table mb-0" id="detalles">
+                                                    </table>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
 
                 <div class="row">
                         <div class="col-12">
@@ -73,5 +112,10 @@
         </div>
         <!-- end wrapper -->
 <?php require_once'../view/footer.php';?>
+
+<script src="../public/assets/pages/form-advanced.js"></script>
+
+<script src="../public/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../public/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="../view/script/ingreso.js"></script>
 

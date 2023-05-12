@@ -54,4 +54,11 @@ Class Articulo{
     WHERE(a.id_categoria=c.id_categoria) AND (a.id_articulo='$id_articulo')";
     return ejecutarConsultaSimpleFila($sql);
   }
+
+  public function select()
+	{
+		$sql="SELECT id_articulo, nombre_articulo FROM articulo 
+		WHERE (estado_articulo=1) ORDER BY nombre_articulo ASC";
+		return ejecutarConsulta($sql);		
+	}
 }

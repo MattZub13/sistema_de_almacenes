@@ -1,10 +1,15 @@
 var tabla;
-
+var detalle;
 function init(){
     //Para validación
 	$.post("../ajax/proveedor.php?op=5", function(r){
 	    $("#id_proveedor").html(r);
 		$('#id_proveedor').trigger('change.select2');
+	});
+
+	$.post("../ajax/articulo.php?op=5", function(r){
+	    $("#id_articulo").html(r);
+		$('#id_articulo').trigger('change.select2');
 	});
 	listar();
     $("#formulario").on("submit",function(e){
@@ -52,6 +57,14 @@ function listar(){
     );
 }
 
+function detalle(id_ingreso){
+	console.log(id_ingreso);
+	$.post("../ajax/ingreso.php?op=5&id_ingreso="+parseInt(id_ingreso),function(r){
+		console.log(r.id_ingreso);
+	    $("#detalles").html(r);
+	});
+}
+
 //Función para guardar o editar
 
 function guardaryeditar(e)
@@ -96,6 +109,7 @@ function guardaryeditar(e)
 
 function mostrar(id_ingreso)
 {
+	
 	$.post("../ajax/ingreso.php?op=4",{id_ingreso : id_ingreso}, function(data, status)
 	{
 		data = $.parseJSON(data);
