@@ -9,6 +9,14 @@ function init() {
 
 }
 
+function limpiar()
+{
+    $("#nombre").val("");
+    $("#direccion").val("");
+	$("#correo").val("");
+
+}
+
 
 
 function listar() {
