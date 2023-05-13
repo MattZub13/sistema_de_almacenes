@@ -70,13 +70,16 @@ function guardaryeditar(e)
 	    {    
             mensaje=datos.split(":");
 			if(mensaje[0]=="1"){               
-			swal.fire(
-				'Mensaje de Confirmación',
-				mensaje[1],
-				'success'
-
-				);           
-	          tabla.ajax.reload();
+				swal.fire(
+					'Mensaje de Confirmación',
+					mensaje[1],
+					'success'
+	
+					).then(function() {
+						tabla.ajax.reload();
+						limpiar();
+						location.reload(); // Recargar la página
+					});
 			}
 			else{
 				Swal.fire({
@@ -101,6 +104,7 @@ function mostrar(id_almacen) {
         $("#nombre").val(data.nombre_almacen)
         $("#direccion").val(data.direccion_almacen);
         $("#telefono").val(data.telefono);
+		$("#responsable").val(data.responsable);
 		$("#capacidad").val(data.capacidad);
 
     });
