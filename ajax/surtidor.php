@@ -40,7 +40,7 @@ switch ($_GET["op"]){
 	break;
 	case '1'://insertacion o edicion del registro
 			if(empty($id_surtidor)){
-				$rspta=$surtidor->insertar($telefono,$ubicacion);
+				$rspta=$surtidor->insertar($ubicacion,$telefono);
 				echo $rspta ? "1:El Surtidor fué registrado" : "0:El Surtidor no fué registrado";
 			}else{
 				$rspta=$surtidor->editar($id_surtidor,$telefono,$ubicacion);

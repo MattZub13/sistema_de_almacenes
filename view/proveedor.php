@@ -24,14 +24,14 @@
                             <div class="modal-body">
                                 <form name="formulario" id="formulario" method="POST">
                                     <div class="form-group row">
-                                        <label for="nombre" class="col-sm-3 col-form-label">Nombre del Articulo: </label>
+                                        <label for="nombre" class="col-sm-3 col-form-label">Nombre del Proveedor: </label>
                                         <div class="col-sm-9 mt-2">
                                             <input type="hidden" name="id_proveedor" id="id_proveedor">
                                             <input class="form-control" type="text"  name="nombre" id="nombre">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="direccion" class="col-sm-3 col-form-label">direccion del Articulo: </label>
+                                        <label for="direccion" class="col-sm-3 col-form-label">direccion del Proveedor: </label>
                                         <div class="col-sm-9 mt-2">
                                             <input class="form-control" type="text"  name="direccion" id="direccion">
                                         </div>

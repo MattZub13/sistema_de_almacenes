@@ -9,7 +9,7 @@
                         <div class="col-sm-6 col-md-3  mt-4">
                                         <div class="text-center">
                                             <!-- Small modal -->
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Nuevo Articulo</button>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Nuevo Ingreso</button>
                                         </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Nuevo Articulo</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Nuevo Ingreso</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

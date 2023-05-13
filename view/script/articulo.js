@@ -1,7 +1,9 @@
 var tabla;
 
+
 function init(){
-    //Para validación
+
+	//cargar opciones para el select de la categoria
 	$.post("../ajax/categoria.php?op=5", function(r){
 	    $("#categoria").html(r);
 		$('#categoria').trigger('change.select2');
@@ -60,7 +62,6 @@ function listar(){
 }
 
 //Función para guardar o editar
-
 function guardaryeditar(e)
 {
     
@@ -104,6 +105,7 @@ function guardaryeditar(e)
 
 }
 
+//funcion para obtener la info de articulo x
 function mostrar(id_articulo)
 {
 	$.post("../ajax/articulo.php?op=4",{id_articulo : id_articulo}, function(data, status)

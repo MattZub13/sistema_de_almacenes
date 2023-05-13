@@ -90,6 +90,7 @@
             </div> <!-- end container -->
         </div>
         <!-- end wrapper -->
+
 <?php require_once'../view/footer.php';?>
 <script type="text/javascript" src="../view/script/articulo.js"></script>
 
