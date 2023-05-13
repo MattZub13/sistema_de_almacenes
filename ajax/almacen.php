@@ -47,7 +47,6 @@ switch ($_GET["op"]){
 		}else {
 			$rspta=$almacen->editar($id_almacen,$nombre, $direccion, $telefono,$responsable, $capacidad);
 			echo $rspta ? "1:El Almacen fue actualizado" : "0:El Almacen no fue actualizado";
-
 		}
 			
 	break;
