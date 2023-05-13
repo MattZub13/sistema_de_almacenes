@@ -51,7 +51,8 @@ switch ($_GET["op"]){
 	break;
 
 	case '4'://obtencion del registro x para la edicion del mismo
-		$rspta=$oficina->detalle_oficina(1);
+		$id=$_GET['id_oficina'];
+		$rspta=$oficina->detalle_oficina($id);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
@@ -60,6 +61,14 @@ switch ($_GET["op"]){
 		while ($reg = pg_fetch_assoc($rspta))
 		{
 			echo '<option value=' . $reg['id_oficina'] . '>' . $reg['nombre_oficina'] . '</option>';
+		}
+	break;
+	case '6'://generacion de opcion para un select donde se lo requiera
+		$id=$_GET['id_oficina'];
+		$rspta = $oficina->detalle_empleado($id);
+		while ($reg = pg_fetch_assoc($rspta))
+		{
+			echo '<p>'.$reg['nombre'].$reg['apellido_paterno'].$reg['apellido_materno'].'</p>'.'<br>';
 		}
 	break;
 	

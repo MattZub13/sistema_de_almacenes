@@ -1,35 +1,38 @@
 <?php require_once'../view/header.php';?>
 
 <div class="row">
-<!--    <div class="col-lg-4">
-    <div class="card">
-            <div class="card-header">
-                Informacion
-                <div id="prueba">
+    <div class="col-lg-4">
+        <div class="card">
+                <div class="card-header">
+                    Informacion
+                    <div id="prueba">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <blockquote class=" quote">
+                        <p class="font-13 text-muted" id="descripcion"></p>
+                    </blockquote>
                 </div>
             </div>
-            <div class="card-body">
-                <blockquote class=" quote">
-                    <p class="font-13 text-muted" id="descripcion"></p>
-                </blockquote>
-            </div>
-        </div>
-        <br>
-        
-                        <div class="card">
-                            <div class="card-header">
-                                Empleado
+            <br>
+            
+                            <div class="card">
+                                <div class="card-header">
+                                    Empleado
+                                </div>
+                                <div class="card-body" id="empleados">
+                                </div>
                             </div>
-                            <div class="card-body" id="empleados">
-                            </div>
-                        </div>
                    
 
         
-    </div> -->
+    </div>
 
     <div class="col-lg-8">
-        <h1 class="text-center" id="titulo" name="titulo"></h1>
+        <div id="titulo">
+        <h1 class="text-center"></h1>
+        </div>
+        
         <br>
             <div class="card-body">
 
@@ -108,7 +111,7 @@
     </div>
 </div>
 
-<!-- <div class="row">
+<div class="row">
 <div class="card-body">
 
 <h4 class="mt-0 header-title">Inventario al almacen X</h4>
@@ -145,7 +148,7 @@
         </tr>
         </tbody>
     </table>
-</div> -->
+</div>
 
 </div>
 </div>
