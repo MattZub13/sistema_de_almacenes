@@ -1,21 +1,23 @@
 <?php 
-require_once "../model/Vehiculo.php";
 
+//llamada al modelo
+require_once "../model/Vehiculo.php";
 $vehiculo=new Vehiculo();
 
+//seteo de variable
 $id_vehiculo=isset($_POST["id_vehiculo"])? $_POST["id_vehiculo"]:"";
 $tipo=isset($_POST["tipo"])? $_POST["tipo"]:"";
 $placa=isset($_POST["placa"])? $_POST["placa"]:"";
 
 
-
+//obtencion de la operacion del .js
 switch ($_GET["op"]){
-	case '0':
+	case '0'://obtencion de los datos para la tabla principal
 		$rspta=$vehiculo->listar();
  		//Vamos a declarar un array
  		$data= Array();
-
- 		while ($reg = pg_fetch_assoc($rspta)){			
+		//se genera la tabla principal con los distintos campos
+		while ($reg = pg_fetch_assoc($rspta)){			
 			$data[]=array(
 				"0"=>($reg['estado_vehiculo'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_vehiculo'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.
 				'<button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_vehiculo'].')">Desactivar</i></button>':
@@ -35,29 +37,29 @@ switch ($_GET["op"]){
  		echo json_encode($results);
 
 	break;
-	case '1':
-			if(empty($id_vehiculo)){
+	case '1'://insertacion o edicion del registro
+		if(empty($id_vehiculo)){
 				$rspta=$vehiculo->insertar($tipo,$placa);
-				echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
+				echo $rspta ? "1:El vehiculo fué registrado" : "0:El vehiculo no fué registrado";
 			}else{
 				$rspta=$vehiculo->editar($id_vehiculo,$tipo,$placa);
 				echo $rspta ? "1:vehiculo Actualizada" : "0:vehiculo no Actualizada";
 			}
 	break;
-	case '2':
+	case '2'://desactivacion del vehiculo
 		$rspta=$vehiculo->desactivar($id_vehiculo);
-		echo $rspta ? "1:La vehiculo fué Desactivado" : "0:La vehiculo no fué Desactivado";
+		echo $rspta ? "1:El vehiculo fué Desactivado" : "0:El vehiculo no fué Desactivado";
 	break;
-	case '3':
+	case '3'://activacion del vehiculo
 		$rspta=$vehiculo->activar($id_vehiculo);
-		echo $rspta ? "1:La vehiculo fué Activada" : "0:La vehiculo no fué Activada";
+		echo $rspta ? "1:El vehiculo fué Activado" : "0:El vehiculo no fué Activado";
 	break;
-	case '4':
+	case '4'://obtencion del registro x para la edicion del mismo
 		$rspta=$vehiculo->mostrar($id_vehiculo);
 		echo json_encode($rspta);
 	break;
 	
-	case '5':
+	case '5'://generacion de opcion para un select donde se lo requiera
 		$rspta = $vehiculo->select();
 		while ($reg = pg_fetch_assoc($rspta))
 		{

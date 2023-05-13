@@ -20,7 +20,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Nuevo Articulo</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar()">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                             </div>
@@ -52,7 +52,9 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary" type="submit" id="btnGuardar"> Guardar</button>
+                                    <div>
+                                        <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardar"></i>Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div><!-- /.modal-content -->
@@ -88,6 +90,7 @@
             </div> <!-- end container -->
         </div>
         <!-- end wrapper -->
+
 <?php require_once'../view/footer.php';?>
 <script type="text/javascript" src="../view/script/articulo.js"></script>
 

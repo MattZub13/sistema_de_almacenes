@@ -9,7 +9,7 @@
                         <div class="col-sm-6 col-md-3  mt-4">
                                         <div class="text-center">
                                             <!-- Small modal -->
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Nuevo Articulo</button>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Nuevo Empleado</button>
                                         </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Nuevo Articulo</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Nuevo Empleado</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -27,20 +27,20 @@
                             <div class="modal-body">
                                 <form name="formulario" id="formulario" method="POST">
                                     <div class="form-group row">
-                                        <label for="nombre" class="col-sm-3 col-form-label">Nombre del Articulo: </label>
+                                        <label for="nombre" class="col-sm-3 col-form-label">Nombre del Empleado: </label>
                                         <div class="col-sm-9 mt-2">
                                             <input type="hidden" name="id_empleado" id="id_empleado">
                                             <input class="form-control" type="text"  name="nombre" id="nombre">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="apellidop" class="col-sm-3 col-form-label">apellidop del Articulo: </label>
+                                        <label for="apellidop" class="col-sm-3 col-form-label">Apellido Paterno del Empleado: </label>
                                         <div class="col-sm-9 mt-2">
                                             <input class="form-control" type="text"  name="apellidop" id="apellidop">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="apellidom" class="col-sm-3 col-form-label">apellidom del Articulo: </label>
+                                        <label for="apellidom" class="col-sm-3 col-form-label">Apellido Materno del Empleado: </label>
                                         <div class="col-sm-9 mt-2">
                                             <input class="form-control" type="text"  name="apellidom" id="apellidom">
                                         </div>
@@ -65,7 +65,9 @@
                                         </div>
                                     </div>
                                     
-                                    <button class="btn btn-primary" type="submit" id="btnGuardar"> Guardar</button>
+                                    <div>
+                                        <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardar"></i>Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div><!-- /.modal-content -->

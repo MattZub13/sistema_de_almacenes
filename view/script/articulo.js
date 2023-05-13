@@ -1,7 +1,9 @@
 var tabla;
 
+
 function init(){
-    //Para validación
+
+	//cargar opciones para el select de la categoria
 	$.post("../ajax/categoria.php?op=5", function(r){
 	    $("#categoria").html(r);
 		$('#categoria').trigger('change.select2');
@@ -17,6 +19,7 @@ function init(){
 //Función limpiar
 function limpiar()
 {
+	$("#id_articulo").val("");
     $("#nombre").val("");
     $("#descripcion").val("");
     $("#precio").val("");
@@ -59,7 +62,6 @@ function listar(){
 }
 
 //Función para guardar o editar
-
 function guardaryeditar(e)
 {
     
@@ -82,8 +84,11 @@ function guardaryeditar(e)
 				mensaje[1],
 				'success'
 
-				);           
-	          tabla.ajax.reload();
+				).then(function() {
+					tabla.ajax.reload();
+					limpiar();
+					location.reload(); // Recargar la página
+				});
 			}
 			else{
 				Swal.fire({
@@ -97,9 +102,10 @@ function guardaryeditar(e)
 	    }
 
 	});
-    limpiar();
+
 }
 
+//funcion para obtener la info de articulo x
 function mostrar(id_articulo)
 {
 	$.post("../ajax/articulo.php?op=4",{id_articulo : id_articulo}, function(data, status)

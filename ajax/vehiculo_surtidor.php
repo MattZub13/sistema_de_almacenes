@@ -1,21 +1,23 @@
 <?php 
-require_once "../model/Vehiculo_surtidor.php";
 
+//llamada al modelo
+require_once "../model/Vehiculo_surtidor.php";
 $vehiculo=new VehiculoSurtidor();
 
+//seteo de variable
 $tipo=isset($_POST["tipo"])?$_POST["tipo"]:"";
 $ubicacion=isset($_POST["ubicacion"])?$_POST["ubicacion"]:"";
 $fecha=isset($_POST["fecha"])? $_POST["fecha"]:"";
 $id_vs=isset($_POST["id_vs"])? $_POST["id_vs"]:"";
 
-
+//obtencion de la operacion del .js
 switch ($_GET["op"]){
-	case '0':
+	case '0'://obtencion de los datos para la tabla principal
 		$rspta=$vehiculo->listar();
  		//Vamos a declarar un array
  		$data= Array();
-
- 		while ($reg = pg_fetch_assoc($rspta)){
+		//se genera la tabla principal con los distintos campos
+		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
 				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_vs'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Editar</button>',
 				"1"=>$reg['tipo_vehiculo'],
@@ -31,7 +33,7 @@ switch ($_GET["op"]){
  			"aaData"=>$data);
  		echo json_encode($results);
 		break;
-    case '1':
+	case '1'://insertacion o edicion del registro
 
             if (empty($id_vs)){
                 $rspta=$vehiculo->insertar($tipo,$ubicacion,$fecha);
@@ -43,7 +45,7 @@ switch ($_GET["op"]){
             }
                 
     break;
-    case '2':
+	case '2'://obtencion del registro x para la edicion del mismo
 		$rspta=$vehiculo->mostrar($id_vs);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);

@@ -1,20 +1,22 @@
 <?php 
-require_once "../model/Sub_almacen.php";
 
+//llamada al modelos
+require_once "../model/Sub_almacen.php";
 $sub_almacen=new Sub_almacen();
 
+//seteo de las variables
 $id_sub_almacen=isset($_POST["id_sub_almacen"])?$_POST["id_sub_almacen"]:"";
 $direccion=isset($_POST["direccion"])? $_POST["direccion"]:"";
 $capacidad=isset($_POST["capacidad"])? $_POST["capacidad"]:"";
 $oficina=isset($_POST["oficina"])? $_POST["oficina"]:"";
 
-
+//obtencion de la operacion del .js
 switch ($_GET["op"]){
-	case '0':
+	case '0'://obtencion de los datos para la tabla principal
 		$rspta=$sub_almacen->listar();
- 		//Vamos a declarar un array
  		$data= Array();
 
+		//se genera la tabla principal con los distintos campos
  		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
 				"0"=>($reg['estado_sub_almacen'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_sub_almacen'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center"><i class="mdi mdi-send mr-2"></i>Editar</button>    '.
@@ -35,7 +37,7 @@ switch ($_GET["op"]){
  			"aaData"=>$data);
  		echo json_encode($results);
 		break;
-	case '1':
+	case '1'://insertacion o edicion del registro
 
 		if (empty($id_sub_almacen)){
 			$rspta=$sub_almacen->insertar($direccion, $capacidad, $oficina);
@@ -47,19 +49,18 @@ switch ($_GET["op"]){
 		}
 			
 	break;
-	case '2':
+	case '2'://desactivacion del subalmacen
 		$rspta=$sub_almacen->desactivar($id_sub_almacen);
  		echo $rspta ? "1:El Sub-Almacen fué Desactivado" : "0:El Sub-Almacen no fué Desactivado";
 	break;
 
-	case '3':
+	case '3'://activacion del subalmacen
 		$rspta=$sub_almacen->activar($id_sub_almacen);
  		echo $rspta ? "1:El Sub-Almacen fué Activado" : "0:El Sub-Almacen no fué Activado";
 	break;
 
-	case '4':
+	case '4'://obtencion del registro x para la edicion del mismo
 		$rspta=$sub_almacen->mostrar($id_sub_almacen);
- 		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
 

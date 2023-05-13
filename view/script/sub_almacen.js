@@ -9,9 +9,7 @@ function init(){
 	listar();
     $("#formulario").on("submit",function(e){
 		guardaryeditar(e);	
-	});
-   
-    
+	});  
 }
 
 //Función limpiar
@@ -59,32 +57,29 @@ function listar(){
 
 //Función para guardar o editar
 
-function guardaryeditar(e)
-{
-    
-	e.preventDefault(); //No se activará la acción predeterminada del evento
-	$("#btnGuardar").prop("disabled",true);
+function guardaryeditar(e) {
+	e.preventDefault(); // No se activará la acción predeterminada del evento
+	$("#btnGuardar").prop("disabled", true);
 	var formData = new FormData($("#formulario")[0]);
 	$.ajax({
 		url: "../ajax/sub_almacen.php?op=1",
-	    type: "POST",
-	    data: formData,
-	    contentType: false,
-	    processData: false,
-
-	    success: function(datos)
-	    {    
-            mensaje=datos.split(":");
-			if(mensaje[0]=="1"){               
-			swal.fire(
-				'Mensaje de Confirmación',
-				mensaje[1],
-				'success'
-
-				);           
-	          tabla.ajax.reload();
-			}
-			else{
+		type: "POST",
+		data: formData,
+		contentType: false,
+		processData: false,
+		success: function(datos) {
+			mensaje = datos.split(":");
+			if (mensaje[0] == "1") {
+				swal.fire(
+					'Mensaje de Confirmación',
+					mensaje[1],
+					'success'
+				).then(function() {
+					tabla.ajax.reload();
+					limpiar();
+					location.reload(); // Recargar la página
+				});
+			} else {
 				Swal.fire({
 					type: 'error',
 					title: 'Error',
@@ -93,11 +88,13 @@ function guardaryeditar(e)
 				});
 				console.log(datos);
 			}
-	    }
-
+		}
 	});
-    limpiar();
 }
+
+// function cerrarFormulario() {
+//     $("#modal-body").hide(); 
+// }
 
 function mostrar(id_sub_almacen)
 {

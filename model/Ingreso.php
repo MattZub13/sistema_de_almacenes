@@ -42,4 +42,11 @@ Class Ingreso{
     FROM ingreso i,proveedor p WHERE (i.id_proveedor=p.id_proveedor) AND (i.id_ingreso='$id_ingreso');";
     return ejecutarConsultaSimpleFila($sql);
   }
+
+  public function detalle($id_ingreso)
+  {
+    $sql="SELECT i.id_ingreso,a.id_articulo,a.nombre_articulo,d.cantidad FROM detalle_ingreso d,ingreso i,articulo a
+    WHERE (d.id_ingreso='$id_ingreso') AND (i.id_ingreso=d.id_ingreso) AND (a.id_articulo=d.id_articulo);";
+    return ejecutarConsulta($sql);
+  }
 }
