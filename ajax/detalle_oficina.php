@@ -1,21 +1,23 @@
 <?php 
-require_once "../model/Detalle_oficina.php";
 
+//llamada al modelo
+require_once "../model/Detalle_oficina.php";
 $solicitud=new Solicitud();
 
+//seteo de variable
 $id_solicitud=isset($_POST["id_solicitud"])?$_POST["id_solicitud"]:"";
 $placa_vehiculo=isset($_POST["placa_vehiculo"])? $_POST["placa_vehiculo"]:"";
 $fecha_solicitud=isset($_POST["fecha_solicitud"])? $_POST["fecha_solicitud"]:"";
 
 
-
+//obtencion de la operacion del .js
 switch ($_GET["op"]){
-	case '0':
+	case '0'://obtencion de los datos para la tabla principal
 		$rspta=$solicitud->listar();
  		//Vamos a declarar un array
  		$data= Array();
-
- 		while ($reg = pg_fetch_assoc($rspta)){
+		//se genera la tabla principal con los distintos campos
+		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
 				"0"=>($reg['estado_solicitud'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.
 					'<button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_solicitud'].')">Desactivar</i></button>':
@@ -34,7 +36,7 @@ switch ($_GET["op"]){
  			"aaData"=>$data);
  		echo json_encode($results);
 		break;
-	case '1':
+	case '1'://insertacion o edicion del registro
 
 		if (empty($id_solicitud)){
 			$rspta=$solicitud->insertar($placa_vehiculo, $fecha_solicitud, $id_vehiculo);
@@ -46,12 +48,12 @@ switch ($_GET["op"]){
 		}
 			
 	break;
-	case '2':
+	case '2'://desactivacion del detalle_oficina
 		$rspta=$solicitud->desactivar($id_solicitud);
  		echo $rspta ? "1:El Artículo fué Desactivado" : "0:El Artículo no fué Desactivado";
 	break;
 
-	case '3':
+	case '3'://activacion del detalle_oficina
 		$rspta=$solicitud->activar($id_solicitud);
  		echo $rspta ? "1:El Artículo fué Activado" : "0:El Artículo no fué Activado";
 	break;

@@ -17,6 +17,7 @@ function init(){
 //Función limpiar
 function limpiar()
 {
+	$("#id_articulo").val("");
     $("#nombre").val("");
     $("#descripcion").val("");
     $("#precio").val("");

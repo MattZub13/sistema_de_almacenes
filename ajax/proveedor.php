@@ -1,20 +1,24 @@
-<?php 
+<?php
+
+//llamada al modelo
 require_once "../model/Proveedor.php";
 
 $proveedor=new Proveedor();
 
+//seteo de variable
 $id_proveedor=isset($_POST["id_proveedor"])? $_POST["id_proveedor"]:"";
 $nombre=isset($_POST["nombre"])? $_POST["nombre"]:"";
 $direccion=isset($_POST["direccion"])? $_POST["direccion"]:"";
 $correo=isset($_POST["correo"])? $_POST["correo"]:"";
 
-
+//obtencion de la operacion del .js
 switch ($_GET["op"]){
-	case '0':
+	case '0'://obtencion de los datos para la tabla principal
 		$rspta=$proveedor->listar();
  		//Vamos a declarar un array
  		$data= Array();
 
+		//se genera la tabla principal con los distintos campos
  		while ($reg = pg_fetch_assoc($rspta)){			
 			$data[]=array(
 				"0"=>($reg['estado_proveedor'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_proveedor'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.
@@ -37,7 +41,7 @@ switch ($_GET["op"]){
 
 	break;
 
-	case '1':
+	case '1'://insertacion o edicion del registro
 
 		if (empty($id_proveedor)){
 			$rspta=$proveedor->insertar($nombre, $direccion, $correo);
@@ -49,22 +53,22 @@ switch ($_GET["op"]){
 		}
 			
 	break;
-	case '2':
+	case '2'://desactivacion del proveedor
 		$rspta=$proveedor->desactivar($id_proveedor);
  		echo $rspta ? "1:El Artículo fué Desactivado" : "0:El Artículo no fué Desactivado";
 	break;
 
-	case '3':
+	case '3'://activacion del proveedor
 		$rspta=$proveedor->activar($id_proveedor);
  		echo $rspta ? "1:El Artículo fué Activado" : "0:El Artículo no fué Activado";
 	break;
 
-	case '4':
+	case '4'://obtencion del registro x para la edicion del mismo
 		$rspta=$proveedor->mostrar($id_proveedor);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
-	case '5':
+	case '5'://generacion de opcion para un select donde se lo requiera
 		$rspta = $proveedor->select();
 		while ($reg = pg_fetch_assoc($rspta))
 		{
