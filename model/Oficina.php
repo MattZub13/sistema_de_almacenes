@@ -74,4 +74,12 @@ Class Oficina{
 		WHERE (estado_oficina=1) ORDER BY nombre_oficina ASC";
 		return ejecutarConsulta($sql);		
 	}
+
+  public function select_grafica($id_oficina)
+  {
+    $sql="SELECT d.id_oficina,d.id_articulo,a.nombre_articulo,d.cantidad 
+    FROM detalle_oficina d,articulo a
+    WHERE (d.id_articulo=a.id_articulo) AND (d.id_oficina='$id_oficina');";
+		return ejecutarConsulta($sql);		
+  }
 }

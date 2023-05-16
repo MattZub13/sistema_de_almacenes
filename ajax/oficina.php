@@ -19,13 +19,35 @@ switch ($_GET["op"]){
 		//se genera la tabla principal con los distintos campos
 		while ($reg = pg_fetch_assoc($rspta))
 		{
-			echo '<div class="col-lg-4 ">
-            <div class="card card-body text-center">
-                <h4 class="card-title font-20 mt-0">'.$reg['nombre_oficina'].'</h4>
-                <p class="font-13 text-muted">'.$reg['descripcion_oficina'].' </p>
-                <a href="../view/detalle_oficina.php?id_oficina='.$reg['id_oficina'].'" value="'.$reg['id_oficina'].'" id="oficina_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
-            </div>
-        </div>';
+							echo '<div class="col-lg-4">
+						<div class="card card-body text-center">
+							<h4 class="card-title font-20 mt-0">'.$reg['nombre_oficina'].'</h4>
+							<p class="font-13 text-muted">'.$reg['descripcion_oficina'].'</p>
+							<div id="chart-'.$reg['id_oficina'].'" style="height: 250px;"></div>
+							<a href="../view/detalle_oficina.php?id_oficina='.$reg['id_oficina'].'" value="'.$reg['id_oficina'].'" id="oficina_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
+						</div>
+						</div>';
+
+				// Crear el gráfico de dona
+				//primero llamaos a gra como respuesta para los datos de la grafica
+				$gra = $oficina->select_grafica($reg['id_oficina']);
+
+				//procedemos a crear un array aumentando los datos al array con un while
+				$data = array();
+				while ($reg1 = pg_fetch_assoc($gra)) {
+					$data[] = array('label' => $reg1['nombre_articulo'], 'value' => $reg1['cantidad']);
+				}
+				$json_data = json_encode($data);
+
+				//se genera un script el cual llama a crear el grafico mediante la libreria
+				echo '<script>
+						new Morris.Donut({
+							element: "chart-'.$reg['id_oficina'].'",
+							data: '.$json_data.'
+						});
+						</script>';
+				//por ultimo vaciamos el array para la proxima iteracion
+				unset($data);
 		}
 		break;
 	case '1'://insertacion o edicion del registro
@@ -68,7 +90,7 @@ switch ($_GET["op"]){
 		$rspta = $oficina->detalle_empleado($id);
 		while ($reg = pg_fetch_assoc($rspta))
 		{
-			echo '<p>'.$reg['nombre'].$reg['apellido_paterno'].$reg['apellido_materno'].'</p>'.'<br>';
+			echo '<p>'.$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno'].'</p>'.'<br>';
 		}
 	break;
 	
