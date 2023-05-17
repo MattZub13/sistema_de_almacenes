@@ -6,6 +6,7 @@ $solicitud=new Solicitud();
 
 //seteo de variable
 $id_solicitud=isset($_POST["id_solicitud"])?$_POST["id_solicitud"]:"";
+
 $placa_vehiculo=isset($_POST["placa_vehiculo"])? $_POST["placa_vehiculo"]:"";
 $fecha_solicitud=isset($_POST["fecha_solicitud"])? $_POST["fecha_solicitud"]:"";
 
@@ -39,10 +40,10 @@ switch ($_GET["op"]){
 	case '1'://insertacion o edicion del registro
 
 		if (empty($id_solicitud)){
-			$rspta=$solicitud->insertar($placa_vehiculo, $fecha_solicitud, $id_vehiculo);
+			$rspta=$solicitud->insertar($placa_vehiculo, $fecha_solicitud);
 			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
 		}else {
-			$rspta=$solicitud->editar($id_solicitud,$placa_vehiculo,$fecha_solicitud,$id_vehiculo);
+			$rspta=$solicitud->editar($id_solicitud,$placa_vehiculo,$fecha_solicitud);
 			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
 
 		}

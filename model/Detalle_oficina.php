@@ -18,7 +18,7 @@ Class Solicitud{
       return ejecutarConsulta($sql);
     }
 
-    public function insertar($placa_vehiculo, $fecha_solicitud, $id_vehiculo)
+    public function insertar($fecha_solicitud, $id_vehiculo)
     {
     
 		$sql="INSERT INTO solicitud(fecha_solicitud,id_vehiculo) VALUES ('$fecha_solicitud',$id_vehiculo);";
@@ -26,7 +26,7 @@ Class Solicitud{
 		
     }
 
-    public function editar($id_solicitud,$placa_vehiculo,$fecha_solicitud,$id_vehiculo)
+    public function editar($id_solicitud,$fecha_solicitud,$id_vehiculo)
     {
     
 		  $sql="UPDATE solicitud SET fecha_solicitud='$fecha_solicitud',id_vehiculo='$id_vehiculo' WHERE id_solicitud='$id_solicitud';";

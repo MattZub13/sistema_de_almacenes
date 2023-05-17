@@ -12,8 +12,8 @@ function init(){
 //Función limpiar
 function limpiar()
 {
-    $("#placa").val("");
-    $("#fecha").val("");
+    $("#placa_vehiculo").val("");
+    $("#fecha_solicitud").val("");
 }
 
 
@@ -105,7 +105,7 @@ function mostrar(id_solicitud)
         $.post("../ajax/vehiculo.php?op=5", function(r){
 			$("#placa_vehiculo").html(r);
 			$('#placa_vehiculo').trigger('change.select2');
-        $("#fecha").val(data.fecha_solicitud)
+        $("#fecha_solicitud").val(data.fecha_solicitud)
 
 		});
  		$("#id_solicitud").val(data.id_solicitud);
