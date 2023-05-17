@@ -1,6 +1,5 @@
 var tabla;
 function init(){
-    
 	$.post("../ajax/oficina.php?op=0", function(r){
 	    $("#oficina_row").html(r);
 		$('#oficina_row').trigger('change.select2');
@@ -201,6 +200,11 @@ function activar(id_articulo)
 		}
 	}); 
 }
+
+
+
+
+
 
 
 init();

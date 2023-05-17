@@ -24,7 +24,7 @@ switch ($_GET["op"]){
 					'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_almacen'].')">Editar</button>'.
 					'<button class="btn btn-purple waves-effect waves-light" onclick="activar('.$reg['id_almacen'].')">Activar</i></button>',
 				"1"=>$reg['nombre_almacen'],
-                "2"=>$reg['direccion'],
+                "2"=>$reg['direccion_almacen'],
                 "3"=>$reg['telefono'],
 				"4"=>$reg['responsable'],
 				"5"=>$reg['capacidad'],
@@ -47,7 +47,6 @@ switch ($_GET["op"]){
 		}else {
 			$rspta=$almacen->editar($id_almacen,$nombre, $direccion, $telefono,$responsable, $capacidad);
 			echo $rspta ? "1:El Almacen fue actualizado" : "0:El Almacen no fue actualizado";
-
 		}
 			
 	break;

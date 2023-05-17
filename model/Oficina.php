@@ -55,10 +55,15 @@ Class Oficina{
 
   public function detalle_oficina($id_oficina)
   {
-    $sql="SELECT o.id_oficina,o.nombre_oficina,o.descripcion_oficina,
-    e.nombre,e.apellido_paterno,e.apellido_materno
-    FROM oficina o,empleado e
-    WHERE (o.id_oficina=e.id_oficina) AND (o.id_oficina='$id_oficina');";
+    $sql="SELECT *
+		FROM oficina WHERE (id_oficina='$id_oficina');";
+    return ejecutarConsultaSimpleFila($sql);
+  }
+
+  public function detalle_empleado($id_oficina)
+  {
+    $sql="SELECT *
+		FROM empleado WHERE (id_oficina='$id_oficina');";
     return ejecutarConsulta($sql);
   }
 
@@ -69,8 +74,12 @@ Class Oficina{
 		WHERE (estado_oficina=1) ORDER BY nombre_oficina ASC";
 		return ejecutarConsulta($sql);		
 	}
+
+  public function select_grafica($id_oficina)
+  {
+    $sql="SELECT d.id_oficina,d.id_articulo,a.nombre_articulo,d.cantidad 
+    FROM detalle_oficina d,articulo a
+    WHERE (d.id_articulo=a.id_articulo) AND (d.id_oficina='$id_oficina');";
+		return ejecutarConsulta($sql);		
+  }
 }
-
-$oficina=new Oficina();
-
-print_r($oficina->detalle_oficina(1));

@@ -70,13 +70,16 @@ function guardaryeditar(e)
 	    {    
             mensaje=datos.split(":");
 			if(mensaje[0]=="1"){               
-			swal.fire(
-				'Mensaje de Confirmación',
-				mensaje[1],
-				'success'
-
-				);           
-	          tabla.ajax.reload();
+				swal.fire(
+					'Mensaje de Confirmación',
+					mensaje[1],
+					'success'
+	
+					).then(function() {
+						tabla.ajax.reload();
+						limpiar();
+						location.reload(); // Recargar la página
+					});
 			}
 			else{
 				Swal.fire({
@@ -93,20 +96,18 @@ function guardaryeditar(e)
     limpiar();
 }
 
-function mostrar(id_articulo)
-{
-	$.post("../ajax/articulo.php?op=4",{id_articulo : id_articulo}, function(data, status)
-	{
-		data = $.parseJSON(data);
-		$("input[name=nombre]").val(data.nombre_articulo);
-        $("#descripcion").val(data.descripcion_articulo);
-        $("#precio").val(data.precio_unitario);
-        $.post("../ajax/categoria.php?op=5", function(r){
-			$("#categoria").html(r);
-			$('#categoria').trigger('change.select2');
-		});
- 		$("#id_articulo").val(data.id_articulo);
- 	});
+function mostrar(id_almacen) {
+    $.post("../ajax/almacen.php?op=4", { id_almacen: id_almacen }, function (data, status) {
+        data = JSON.parse(data);
+        console.log(data);
+        $("#id_almacen").val(data.id_almacen);
+        $("#nombre").val(data.nombre_almacen)
+        $("#direccion").val(data.direccion_almacen);
+        $("#telefono").val(data.telefono);
+		$("#responsable").val(data.responsable);
+		$("#capacidad").val(data.capacidad);
+
+    });
 }
 
 //Función para desactivar registros

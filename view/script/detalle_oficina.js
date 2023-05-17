@@ -1,4 +1,6 @@
-var tabla;
+$(document).ready(function() {
+    // Obtener el valor del parámetro "id_oficina_oficina" de la URL
+    const urlParams = new URLSearchParams(window.location.search);
 
 function init(){
 	listar();
@@ -12,8 +14,8 @@ function init(){
 //Función limpiar
 function limpiar()
 {
-    $("#placa_vehiculo").val("");
-    $("#fecha_solicitud").val("");
+    $("#placa").val("");
+    $("#fecha").val("");
 }
 
 
@@ -105,86 +107,19 @@ function mostrar(id_solicitud)
         $.post("../ajax/vehiculo.php?op=5", function(r){
 			$("#placa_vehiculo").html(r);
 			$('#placa_vehiculo').trigger('change.select2');
-        $("#fecha_solicitud").val(data.fecha_solicitud)
+        $("#fecha").val(data.fecha_solicitud)
 
-		});
- 		$("#id_solicitud").val(data.id_solicitud);
- 	});
+		  var tituloElemento = document.querySelector("#titulo h1");
+		  var descripcionElemento = document.querySelector("#descripcion");
+
+			tituloElemento.innerText = data.nombre_oficina;
+			descripcionElemento.innerText = data.descripcion_oficina+data.ubicacion_oficina;
+    	});
 }
 
-//Función para desactivar registros
-function desactivar(id_solicitud)
-{
-	swal.fire({
-		title: 'Mensaje de Confirmación',
-		text: "¿Desea desactivar el Registro?",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Desactivar'
-	}).then((result) => {
-		if (result.value) {
-			$.post("../ajax/detalle_oficina.php?op=2", {id_solicitud : id_solicitud}, function(e){
-				mensaje=e.split(":");
-					if(mensaje[0]=="1"){  
-						swal.fire(
-							'Mensaje de Confirmación',
-							mensaje[1],
-							'success'
-						);  
-						tabla.ajax.reload();
-					}	
-					else{
-						Swal.fire({
-							type: 'error',
-							title: 'Error',
-							text: mensaje[1],
-							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
-						});
-					}			
-        	});	
-		}
-	});   
+function empleados(id_oficina){
+	$.post("../ajax/oficina.php?op=6&id_oficina="+parseInt(id_oficina),function(r){
+		console.log(r);
+	    $("#empleados").html(r);
+	});
 }
-
-//Función para activar registros
-function activar(id_solicitud)
-{
-	swal.fire({
-		title: 'Mensaje de Confirmación',
-		text: "¿Desea activar el Registro?",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Activar'
-	}).then((result) => {
-		if (result.value) {
-			$.post("../ajax/detalle_oficina.php?op=3", {id_solicitud : id_solicitud}, function(e){
-				mensaje=e.split(":");
-					if(mensaje[0]=="1"){  
-						swal.fire(
-							'Mensaje de Confirmación',
-							mensaje[1],
-							'success'
-						);  
-						tabla.ajax.reload();
-					}	
-					else{
-						Swal.fire({
-							type: 'error',
-							title: 'Error',
-							text: mensaje[1],
-							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
-						});
-					}			
-        	});	
-		}
-	}); 
-}
-
-
-init();

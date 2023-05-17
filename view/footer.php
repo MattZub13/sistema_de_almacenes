@@ -36,6 +36,11 @@
         <!-- App js -->
         <script src="../public/assets/js/app.js"></script>
 
+
+        <!--Morris Chart-->
+        <script src="../public/assets/plugins/morris/morris.min.js"></script>
+        <script src="../public/assets/plugins/raphael/raphael-min.js"></script>
+
         <!-- Sweet Alerts js -->
         <script src="../public/assets/plugins/sweet-alert2/sweetalert2.all.min.js"></script>
        
