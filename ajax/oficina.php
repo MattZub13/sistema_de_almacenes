@@ -23,7 +23,7 @@ switch ($_GET["op"]){
 						<div class="card card-body text-center">
 							<h4 class="card-title font-20 mt-0">'.$reg['nombre_oficina'].'</h4>
 							<p class="font-13 text-muted">'.$reg['descripcion_oficina'].'</p>
-							<div id="chart-'.$reg['id_oficina'].'" style="height: 250px;"></div>
+							<div id="chart-'.$reg['id_oficina'].'" class="pr-3" style="height: 250px;"></div>
 							<a href="../view/detalle_oficina.php?id_oficina='.$reg['id_oficina'].'" value="'.$reg['id_oficina'].'" id="oficina_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
 						</div>
 						</div>';
