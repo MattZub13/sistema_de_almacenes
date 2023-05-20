@@ -1,12 +1,25 @@
 var tabla;
 
-function init(){
-    listar();
-    $("#formulario").on("submit",function(e){
-		guardaryeditar(e);	
-	});   
-    
-}
+var barData = [
+	{y: '2009', a: 100, b: 90},
+	{y: '2010', a: 75, b: 65},
+	{y: '2011', a: 50, b: 40},
+	{y: '2012', a: 75, b: 65},
+	{y: '2013', a: 50, b: 40},
+	{y: '2014', a: 75, b: 65},
+	{y: '2015', a: 100, b: 90},
+	{y: '2016', a: 90, b: 75}
+  ];
+  
+  function init() {
+	new Morris.Bar({
+	  element: 'donut-example',
+	  data: barData,
+	  xkey: 'y',
+	  ykeys: ['a', 'b'],
+	  labels: ['Series A', 'Series B']
+	});
+  }
 
 //Función limpiar
 function limpiar()

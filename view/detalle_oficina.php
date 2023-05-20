@@ -66,52 +66,10 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="descripcion" class="col-sm-3 col-form-label">Fecha: </label>
-                                        <div class="col-sm-9 mt-2">
-                                            <input class="form-control" type="date"  name="date" id="fecha_solicitud">
-                                        </div>
-                                    </div>
 
                                     <div>
                                         <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardar"></i>Guardar</button>
                                     </div>
-
-                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                                                <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
-                                                <thead style="background-color:##605daf">
-                                                        <th>Opciones</th>
-                                                        <th>Tipo Vehiculo</th>
-                                                        <th>Placa vehiculo</th>
-
-                                                    </thead>
-                                                    <tr>
-                                                        <th>x</th>
-                                                        <th>Camioneta</th>
-                                                        <th>3124ED</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>x</th>
-                                                        <th>Camioneta</th>
-                                                        <th>3124ED</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>x</th>
-                                                        <th>Camioneta</th>
-                                                        <th>3124ED</th>
-                                                    </tr>
-         
-                                                    <!-- <tfoot>
-                                                        <th>TOTAL</th>
-                                                        <th></th>
-                                                        <th></th>
-                                                        <th><h4 id="total">0</h4><input type="hidden" name="total_compra" id="total_compra"></th> 
-                                                    </tfoot> -->
-                                                    <tbody>
-                                                    
-                                                    </tbody>
-                                                </table>
-                                            </div>  
                                 </form>
                             </div>
                         </div><!-- /.modal-content -->
