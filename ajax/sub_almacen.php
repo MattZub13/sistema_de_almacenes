@@ -63,6 +63,42 @@ switch ($_GET["op"]){
 		$rspta=$sub_almacen->mostrar($id_sub_almacen);
  		echo json_encode($rspta);
 	break;
+	case '5':
+		$rspta = $sub_almacen->listar();
+
+		//se genera la tabla principal con los distintos campos
+		while ($reg = pg_fetch_assoc($rspta))
+		{
+							echo '<div class="col-lg-4">
+						<div class="card card-body text-center">
+							<h4 class="card-title font-20 mt-0">'.$reg['direccion_sub_almacen'].'</h4>
+							<div id="chart-'.$reg['id_sub_almacen'].'" class="pr-3" style="height: 250px;"></div>
+							<a href="#" value="'.$reg['id_sub_almacen'].'" id="oficina_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
+						</div>
+						</div>';
+
+				// Crear el gráfico de dona
+				//primero llamaos a gra como respuesta para los datos de la grafica
+				$gra = $sub_almacen->select_grafica($reg['id_sub_almacen']);
+
+				//procedemos a crear un array aumentando los datos al array con un while
+				$data = array();
+				while ($reg1 = pg_fetch_assoc($gra)) {
+					$data[] = array('label' => $reg1['nombre_articulo'], 'value' => $reg1['cantidad']);
+				}
+				$json_data = json_encode($data);
+
+				//se genera un script el cual llama a crear el grafico mediante la libreria
+				echo '<script>
+						new Morris.Donut({
+							element: "chart-'.$reg['id_sub_almacen'].'",
+							data: '.$json_data.'
+						});
+						</script>';
+				//por ultimo vaciamos el array para la proxima iteracion
+				unset($data);
+		}
+	break;
 
 }
 ?>

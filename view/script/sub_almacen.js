@@ -1,7 +1,12 @@
 var tabla;
 
 function init(){
-    //Para validación
+    
+	$.post("../ajax/sub_almacen.php?op=5", function(r){
+	    $("#subalmacen_row").html(r);
+		$('#subalmacen_row').trigger('change.select2');
+	});
+
 	$.post("../ajax/oficina.php?op=5", function(r){
 	    $("#oficina").html(r);
 		$('#oficina').trigger('change.select2');

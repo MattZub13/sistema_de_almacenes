@@ -54,4 +54,12 @@ Class Sub_almacen{
     WHERE(s.id_oficina=o.id_oficina) AND (s.id_sub_almacen='$id_sub_almacen')";
     return ejecutarConsultaSimpleFila($sql);
   }
+
+  public function select_grafica($id_sub_almacen)
+  {
+    $sql="SELECT d.id_sub_almacen,d.id_articulo,a.nombre_articulo,d.cantidad 
+    FROM detalle_subalmacen d,articulo a
+    WHERE (d.id_articulo=a.id_articulo) AND (d.id_sub_almacen='$id_sub_almacen');";
+		return ejecutarConsulta($sql);		
+  }
 }

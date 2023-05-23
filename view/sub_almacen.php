@@ -48,6 +48,10 @@
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
 
+                <div class="row" id="subalmacen_row" >
+
+                </div>
+
                 <div class="row">
                         <div class="col-12">
                             <div class="card" id="listadoregistros">
