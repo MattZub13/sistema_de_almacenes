@@ -1,16 +1,7 @@
 <?php require_once'../view/header.php';?>
 <div class="wrapper">
     <div class="container-fluid">
-        <div class="row">
-            <div class="page-title-box">
-                <div class="col-sm-6 col-md-3  mt-4">
-                    <div class="text-center">
-                        <!-- Small modal -->
-                        <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Añadir Articulo al Almacen</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
 
         <div class="modal fade bs-example-modal-center" id="modal-body" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
