@@ -2,7 +2,9 @@
 
 <div class="wrapper">
             <div class="container-fluid">
-
+                <div class="row">
+                    <a href="../view/detalle_almacen.php" class="btn btn-primary waves-effect waves-light">Lista Almacen</a>
+                </div>
                 <div class="row">
                 <div id="donut-example"></div>
                 </div>
