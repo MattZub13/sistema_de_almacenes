@@ -16,7 +16,17 @@ function init(){
 		guardaryeditar(e);	
 	});  
 }
-
+$(document).ready(function() {
+	$("#subalmacen_detalle").click(function(event) {	
+	  // Prevenir que se siga la URL por defecto de la etiqueta "a"
+	  event.preventDefault();
+	  // Obtener el valor del atributo "value" de la etiqueta "a"
+	  const valor = $(this).attr("value");
+	  console.log(valor);
+	  // Redirigir a la siguiente página y pasar el valor como parámetro de la URL
+	  window.location.href = "../view/detalle_subalmacen.php?id_sub_almacen=" + valor;
+	});
+});
 //Función limpiar
 function limpiar()
 {
