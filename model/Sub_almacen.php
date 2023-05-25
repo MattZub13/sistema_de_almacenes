@@ -62,4 +62,10 @@ Class Sub_almacen{
     WHERE (d.id_articulo=a.id_articulo) AND (d.id_sub_almacen='$id_sub_almacen');";
 		return ejecutarConsulta($sql);		
   }
+
+  public function select()
+  {
+    $sql="SELECT * FROM sub_almacen;";
+		return ejecutarConsulta($sql);	
+  }	
 }

@@ -59,7 +59,7 @@ Class Empleado{
 
   public function select()
   {
-    $sql="SELECT nombre,apellido_paterno,apellido_materno FROM empleado;";
+    $sql="SELECT id_empleado,nombre,apellido_paterno,apellido_materno FROM empleado;";
     return ejecutarConsulta($sql);
   }
 

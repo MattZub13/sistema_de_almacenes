@@ -7,14 +7,19 @@ $solicitud=new Solicitud();
 //seteo de variable
 $id_solicitud=isset($_POST["id_solicitud"])?$_POST["id_solicitud"]:"";
 
-$placa_vehiculo=isset($_POST["placa_vehiculo"])? $_POST["placa_vehiculo"]:"";
-$fecha_solicitud=isset($_POST["fecha_solicitud"])? $_POST["fecha_solicitud"]:"";
+$id_empleado=isset($_POST["id_empleado"])? $_POST["id_empleado"]:"";
+$id_oficina=isset($_POST["id_oficina"])? $_POST["id_oficina"]:"";
+
+$id_sub_almacen=isset($_POST["id_sub_almacen"])? $_POST["id_sub_almacen"]:"";
+$id_articulo=isset($_POST["id_articulo"])? $_POST["id_articulo"]:"";
+$cantidad=isset($_POST["cantidad"])? $_POST["cantidad"]:"";
 
 
 //obtencion de la operacion del .js
 switch ($_GET["op"]){
 	case '0'://obtencion de los datos para la tabla principal
-		$rspta=$solicitud->listar();
+		$id=$_GET['id_oficina'];
+		$rspta=$solicitud->listar_solicitud_oficina($id);
  		//Vamos a declarar un array
  		$data= Array();
 		//se genera la tabla principal con los distintos campos
@@ -24,7 +29,7 @@ switch ($_GET["op"]){
 					'<button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_solicitud'].')">Desactivar</i></button>':
 					'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_solicitud'].')">Editar</button>'.
 					'<button class="btn btn-purple waves-effect waves-light" onclick="activar('.$reg['id_solicitud'].')">Activar</i></button>',
-				"1"=>$reg['placa_vehiculo'],
+				"1"=>$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno'],
                 "2"=>$reg['fecha_solicitud'],
 				"3"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
 					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
@@ -40,18 +45,20 @@ switch ($_GET["op"]){
 	case '1'://insertacion o edicion del registro
 
 		if (empty($id_solicitud)){
-			$rspta=$solicitud->insertar($placa_vehiculo, $fecha_solicitud);
+			$rspta=$solicitud->insertar($id_empleado, $id_oficina);
 			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
 		}else {
-			$rspta=$solicitud->editar($id_solicitud,$placa_vehiculo,$fecha_solicitud);
+			$rspta=$solicitud->editar($id_solicitud,$id_empleado,$id_oficina);
 			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
 
 		}
 			
 	break;
 	case '2'://desactivacion del detalle_oficina
-		$rspta=$solicitud->desactivar($id_solicitud);
- 		echo $rspta ? "1:El Artículo fué Desactivado" : "0:El Artículo no fué Desactivado";
+		
+			$rspta=$solicitud->insertar_detalle_oficina($id_solicitud,$id_sub_almacen,$id_articulo,$cantidad);
+			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
+
 	break;
 
 	case '3'://activacion del detalle_oficina
@@ -63,6 +70,12 @@ switch ($_GET["op"]){
 		$rspta=$solicitud->mostrar($id_solicitud);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
+	break;
+
+	case '5':
+		$rspta=$solicitud->obtenerUltimoId();
+ 		//Codificar el resultado utilizando json
+ 		echo ($rspta);
 	break;
 
 }
