@@ -1,37 +1,22 @@
 var tabla;
 
 function init(){
-    
-	$.post("../ajax/sub_almacen.php?op=5", function(r){
-	    $("#subalmacen_row").html(r);
-		$('#subalmacen_row').trigger('change.select2');
-	});
-
-	$.post("../ajax/oficina.php?op=5", function(r){
-	    $("#oficina").html(r);
-		$('#oficina').trigger('change.select2');
-	});
+    //Para validación
 	listar();
+	$.post("../ajax/articulo.php?op=5", function(r){
+	    $("#articulo").html(r);
+		$('#articulo').trigger('change.select2');
+	});
     $("#formulario").on("submit",function(e){
 		guardaryeditar(e);	
-	});  
-}
-$(document).ready(function() {
-	$("#subalmacen_detalle").click(function(event) {	
-	  // Prevenir que se siga la URL por defecto de la etiqueta "a"
-	  event.preventDefault();
-	  // Obtener el valor del atributo "value" de la etiqueta "a"
-	  const valor = $(this).attr("value");
-	  console.log(valor);
-	  // Redirigir a la siguiente página y pasar el valor como parámetro de la URL
-	  window.location.href = "../view/detalle_subalmacen.php?id_sub_almacen=" + valor;
 	});
-});
+    
+}
+
 //Función limpiar
 function limpiar()
 {
-    $("#direccion").val("");
-    $("#capacidad").val("");
+    $("#cantidad").val("");
 }
 
 
@@ -56,7 +41,8 @@ function listar(){
                     ],
             "ajax":
                     {
-                        url: '../ajax/sub_almacen.php?op=0',
+                        
+                        url: '../ajax/detalle_almacen.php?op=0',
                         type : "get",
                         dataType : "json",						
                         error: function(e){
@@ -72,62 +58,64 @@ function listar(){
 
 //Función para guardar o editar
 
-function guardaryeditar(e) {
-	e.preventDefault(); // No se activará la acción predeterminada del evento
-	$("#btnGuardar").prop("disabled", true);
+function guardaryeditar(e)
+{
+    
+	e.preventDefault(); //No se activará la acción predeterminada del evento
+	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 	$.ajax({
-		url: "../ajax/sub_almacen.php?op=1",
-		type: "POST",
-		data: formData,
-		contentType: false,
-		processData: false,
-		success: function(datos) {
-			mensaje = datos.split(":");
-			if (mensaje[0] == "1") {
-				swal.fire(
-					'Mensaje de Confirmación',
-					mensaje[1],
-					'success'
+		url: "../ajax/detalle_almacen.php?op=1",
+	    type: "POST",
+	    data: formData,
+	    contentType: false,
+	    processData: false,
+
+	    success: function(datos)
+	    {    
+            mensaje=datos.split(":");
+			if(mensaje[0]=="1"){               
+			swal.fire(
+				'Mensaje de Confirmación',
+				mensaje[1],
+				'success'
+
 				).then(function() {
 					tabla.ajax.reload();
 					limpiar();
 					location.reload(); // Recargar la página
 				});
-			} else {
+			}
+			else{
 				Swal.fire({
 					type: 'error',
 					title: 'Error',
 					text: mensaje[1],
-					footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+					footer: 'Verifique la información de Surtidor, en especial que la información no fué ingresada previamente a la Base de Datos.'
 				});
 				console.log(datos);
 			}
-		}
+	    }
+
 	});
 }
 
-// function cerrarFormulario() {
-//     $("#modal-body").hide(); 
-// }
-
-function mostrar(id_sub_almacen)
+function mostrar(id_detalle)
 {
-	$.post("../ajax/sub_almacen.php?op=4",{id_sub_almacen : id_sub_almacen}, function(data, status)
+	$.post("../ajax/detalle_almacen.php?op=4",{id_detalle : id_detalle}, function(data, status)
 	{
-		data = $.parseJSON(data);
-		$("#direccion").val(data.direccion_sub_almacen);
-        $("#capacidad").val(data.capacidad_sub_almacen);
-        $.post("../ajax/oficina.php?op=5", function(r){
-			$("#oficina").html(r);
-			$('#oficina').trigger('change.select2');
+		data = JSON.parse(data);
+        $("#cantidad").val(data.cantidad);
+        $.post("../ajax/articulo.php?op=5", function(r){
+			$("#articulo").html(r);
+			$('#articulo').trigger('change.select2');
 		});
- 		$("#id_sub_almacen").val(data.id_sub_almacen);
+        
+ 		$("#id_detalle").val(data.id_detalle);
  	});
 }
 
-//Función para desactivar registros
-function desactivar(id_sub_almacen)
+function desactivar(id_detalle)
 {
 	swal.fire({
 		title: 'Mensaje de Confirmación',
@@ -140,7 +128,7 @@ function desactivar(id_sub_almacen)
 		confirmButtonText: 'Desactivar'
 	}).then((result) => {
 		if (result.value) {
-			$.post("../ajax/sub_almacen.php?op=2", {id_sub_almacen : id_sub_almacen}, function(e){
+			$.post("../ajax/detalle_almacen.php?op=2", {id_detalle : id_detalle}, function(e){
 				mensaje=e.split(":");
 					if(mensaje[0]=="1"){  
 						swal.fire(
@@ -163,8 +151,8 @@ function desactivar(id_sub_almacen)
 	});   
 }
 
-//Función para activar registros
-function activar(id_sub_almacen)
+
+function activar(id_detalle)
 {
 	swal.fire({
 		title: 'Mensaje de Confirmación',
@@ -177,7 +165,7 @@ function activar(id_sub_almacen)
 		confirmButtonText: 'Activar'
 	}).then((result) => {
 		if (result.value) {
-			$.post("../ajax/sub_almacen.php?op=3", {id_sub_almacen : id_sub_almacen}, function(e){
+			$.post("../ajax/detalle_almacen.php?op=3", {id_detalle : id_detalle}, function(e){
 				mensaje=e.split(":");
 					if(mensaje[0]=="1"){  
 						swal.fire(
@@ -199,6 +187,4 @@ function activar(id_sub_almacen)
 		}
 	}); 
 }
-
-
 init();

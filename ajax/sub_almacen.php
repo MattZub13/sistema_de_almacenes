@@ -60,7 +60,8 @@ switch ($_GET["op"]){
 	break;
 
 	case '4'://obtencion del registro x para la edicion del mismo
-		$rspta=$sub_almacen->mostrar($id_sub_almacen);
+		$id=$_GET['id_sub_almacen'];
+		$rspta=$sub_almacen->mostrar($id);
  		echo json_encode($rspta);
 	break;
 	case '5':
@@ -73,7 +74,7 @@ switch ($_GET["op"]){
 						<div class="card card-body text-center">
 							<h4 class="card-title font-20 mt-0">'.$reg['direccion_sub_almacen'].'</h4>
 							<div id="chart-'.$reg['id_sub_almacen'].'" class="pr-3" style="height: 250px;"></div>
-							<a href="#" value="'.$reg['id_sub_almacen'].'" id="oficina_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
+							<a href="../view/detalle_subalmacen.php?id_sub_almacen='.$reg['id_sub_almacen'].'" value="'.$reg['id_sub_almacen'].'" id="subalmacen_detalle" class="btn btn-primary waves-effect waves-light">Detalle</a>
 						</div>
 						</div>';
 
