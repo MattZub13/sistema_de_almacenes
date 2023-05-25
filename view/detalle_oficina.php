@@ -47,30 +47,63 @@
                     </div>
                 </div>
                 <!-- end page title end breadcrumb -->
-                <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="static">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Nueva Solicitud</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                             <div class="modal-body">
-                                <form name="formulario" id="formulario" method="POST">
-                                <input type="hidden" name="id_articulo" id="id_articulo">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Placa de Vehiculo:</label>
-                                        <div class="col-sm-9">
-                                            <select class="form-control" id="placa_vehiculo" name="nombre">
-                                            </select>
+                                <div id="form_solicitud">
+                                    <form name="formulario" id="formulario" method="POST">
+                                    <input type="hidden" name="id_oficina" id="id_oficina">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Placa de Vehiculo:</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="id_empleado" name="id_empleado">
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div>
-                                        <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardar"></i>Guardar</button>
-                                    </div>
-                                </form>
+                                        <div>
+                                            <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardar"></i>Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div id="form_detalle">
+                                    <form name="detalle_form" id="detalle_form" method="POST">
+                                    <input type="hidden" name="id_solicitud" id="id_solicitud">
+                                    <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Placa de Vehiculo:</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="id_sub_almacen" name="id_sub_almacen">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Placa de Vehiculo:</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="id_articulo" name="id_articulo">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="precio" class="col-sm-3 col-form-label">Precio Unitario: </label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" type="number" min="0" name="cantidad" id="cantidad">
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardarDetalle"></i>Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                               
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->

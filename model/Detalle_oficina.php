@@ -18,12 +18,29 @@ Class Solicitud{
       return ejecutarConsulta($sql);
     }
 
-    public function insertar($fecha_solicitud, $id_vehiculo)
+    public function listar_solicitud_oficina($id_oficina)
+    {
+      $sql="SELECT s.id_solicitud,s.fecha_solicitud,s.id_empleado,s.estado_solicitud,e.id_empleado,e.nombre,e.apellido_paterno,e.apellido_materno
+      FROM solicitud s,empleado e
+      WHERE  (s.id_empleado=e.id_empleado)
+      AND (s.id_oficina='$id_oficina') ;";
+      return ejecutarConsulta($sql);
+    }
+
+    public function insertar($id_empleado, $id_oficina)
     {
     
-		$sql="INSERT INTO solicitud(fecha_solicitud,id_vehiculo) VALUES ('$fecha_solicitud',$id_vehiculo);";
+		$sql="INSERT INTO solicitud(id_empleado,id_oficina) VALUES ('$id_empleado', '$id_oficina');";
 		return ejecutarConsulta($sql);
 		
+    }
+
+    public function insertar_detalle_oficina($id_solicitud,$id_sub_almacen,$id_articulo,$cantidad)
+    {
+      $sql="INSERT INTO detalle_solicitud(
+        id_solicitud, id_sub_almacen,id_articulo, cantidad_solicitud)
+        VALUES ('$id_solicitud','$id_sub_almacen','$id_articulo','$cantidad');";
+      return ejecutarConsulta($sql);
     }
 
     public function editar($id_solicitud,$fecha_solicitud,$id_vehiculo)
@@ -54,4 +71,24 @@ Class Solicitud{
     WHERE(a.id_vehiculo=c.id_vehiculo) AND (a.id_solicitud='$id_solicitud')";
     return ejecutarConsultaSimpleFila($sql);
   }
+
+
+  public function obtenerUltimoId()
+{
+    $sql = "SELECT id_solicitud FROM solicitud ORDER BY id_solicitud DESC LIMIT 1;";
+    $resultado = ejecutarConsulta($sql);
+
+    if ($resultado) {
+        $ultimo_id = pg_fetch_result($resultado, 0, 0);
+
+        // Hacer algo con $ultimo_id
+        // ...
+
+        // Devolver el último id_solicitud insertado
+        return $ultimo_id;
+    } else {
+        // Manejar el error en caso de que no se obtenga el último id_solicitud
+        return false;
+    }
+}
 }

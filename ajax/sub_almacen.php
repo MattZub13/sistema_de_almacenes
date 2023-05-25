@@ -100,6 +100,13 @@ switch ($_GET["op"]){
 				unset($data);
 		}
 	break;
+	case '6'://generacion de opcion para un select donde se lo requiera
+		$rspta = $sub_almacen->select();
+		while ($reg = pg_fetch_assoc($rspta))
+		{
+			echo '<option value=' . $reg['id_sub_almacen'] . '>' . $reg['direccion_sub_almacen'] . '</option>';
+		}
+	break;
 
 }
 ?>

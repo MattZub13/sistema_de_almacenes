@@ -93,6 +93,14 @@ switch ($_GET["op"]){
 			echo '<p>'.$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno'].'</p>'.'<br>';
 		}
 	break;
+	case '7'://generacion de opcion para un select donde se lo requiera
+		$id=$_GET['id_oficina'];
+		$rspta = $oficina->detalle_empleado($id);
+		while ($reg = pg_fetch_assoc($rspta))
+		{
+			echo '<option value=' . $reg['id_empleado'] . '>' .$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno']. '</option>';
+		}
+	break;
 	
 
 }
