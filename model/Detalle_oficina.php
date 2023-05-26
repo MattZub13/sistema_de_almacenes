@@ -43,6 +43,13 @@ Class Solicitud{
       return ejecutarConsulta($sql);
     }
 
+    public function listar_detalle_solicitud($id_solicitud)
+    {
+      $sql="SELECT d.id_solicitud,d.id_articulo,d.cantidad_solicitud,a.nombre_articulo
+      FROM detalle_solicitud d,articulo a WHERE (d.id_articulo=a.id_articulo) AND (d.id_solicitud='$id_solicitud');";
+      return ejecutarConsulta($sql);
+    }
+
     public function editar($id_solicitud,$fecha_solicitud,$id_vehiculo)
     {
     

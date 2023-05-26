@@ -188,6 +188,8 @@ function obtener_id(){
 }
 
 
+
+
 function info_oficina(id_oficina)
   {
       $.post("../ajax/oficina.php?op=4&id_oficina="+parseInt(id_oficina), function(data, status)
@@ -212,6 +214,14 @@ function mostrar(id_solicitud)
 		console.log(data);
 		$("#fecha").val(data.fecha_solicitud)
  		$("#id_solicitud").val(data.id_solicitud);
+ 	});
+}
+
+
+function detalle_solicitud(id_solicitud){
+	$.post("../ajax/detalle_oficina.php?op=3&id_solicitud="+parseInt(id_solicitud), function(r)
+	{
+		$("#detalles").html(r);
  	});
 }
 

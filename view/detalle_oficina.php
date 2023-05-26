@@ -109,6 +109,25 @@
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
 
+
+
+                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title mt-0" id="mySmallModalLabel">Small modal</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <table class="table mb-0" id="detalles">
+                                                    </table>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+
+
+
                 <div class="row">
                         <div class="col-12">
                             <div class="card" id="listadoregistros">

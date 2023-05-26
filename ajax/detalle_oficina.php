@@ -25,10 +25,7 @@ switch ($_GET["op"]){
 		//se genera la tabla principal con los distintos campos
 		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
-				"0"=>($reg['estado_solicitud'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.
-					'<button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_solicitud'].')">Desactivar</i></button>':
-					'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_solicitud'].')">Editar</button>'.
-					'<button class="btn btn-purple waves-effect waves-light" onclick="activar('.$reg['id_solicitud'].')">Activar</i></button>',
+				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Editar</button>',
 				"1"=>$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno'],
                 "2"=>$reg['fecha_solicitud'],
 				"3"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
@@ -61,9 +58,23 @@ switch ($_GET["op"]){
 
 	break;
 
-	case '3'://activacion del detalle_oficina
-		$rspta=$solicitud->activar($id_solicitud);
- 		echo $rspta ? "1:El Artículo fué Activado" : "0:El Artículo no fué Activado";
+	case '3':
+		//Recibimos el idingreso
+		$id=$_GET['id_solicitud'];
+
+		$rspta = $solicitud->listar_detalle_solicitud($id);
+		echo '<thead style="background-color:#A9D0F5">
+                                    <th>Artículo</th>
+                                    <th>Cantidad</th>
+                                
+                                </thead>';
+		echo '<tr>';
+        while ($reg = pg_fetch_assoc($rspta)){	
+					echo '<td>'.$reg['nombre_articulo'].'</td>
+					<td>'.$reg['cantidad_solicitud'].'</td></tr>';
+					
+				}
+		echo '</tr>';
 	break;
 
 	case '4':
