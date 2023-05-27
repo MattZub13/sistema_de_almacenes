@@ -88,7 +88,7 @@
                 </div> <!-- end row -->
                 <div class="col-sm-6 col-md-3 mt-4">
     <div class="text-center">
-        <a href="../view/report/Reporte_articulo.php" target="_blank" class="btn btn-primary waves-effect waves-light">Generar Reporte</a>
+        <a href="../view/report/Report_articulo.pdf" target="_blank" class="btn btn-primary waves-effect waves-light">Generar Reporte</a>
     </div>
 </div>
 
