@@ -19,6 +19,7 @@ var barData = [
 	  ykeys: ['a', 'b'],
 	  labels: ['Series A', 'Series B']
 	});
+	listar();
   }
 
 //Función limpiar

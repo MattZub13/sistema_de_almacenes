@@ -30,7 +30,7 @@
                     <!-- Logo container-->
                     <div class="logo">
                         <a href="./dashboard.php" class="logo">
-                            <i class="mdi mdi-bowling text-success mr-1"></i> <span class="hide-phone">Sistema de Almacenes UCB</span>
+                            <img src="../public/assets/images/logo-UCB.png" style="height:60px; margin:5px 0;" alt=""> <span class="hide-phone">Sistema de Almacenes UCB</span>
                         </a>
 
                     </div>
@@ -59,7 +59,8 @@
                                 <ul class="submenu megamenu">
                                     <li>
                                         <ul>
-                                            <li><a href="./almacen.php">Almacenes</a></li>
+                                            <li><a href="./almacen.php">Almacen</a></li>
+                                            <li><a href="./sub_almacen.php">Sub Almacenes</a></li>
                                             <li><a href="./articulo.php">Artículos</a></li>
                                             <li><a href="./categoria.php">Categorias</a></li>     
                                         </ul>
