@@ -1194,7 +1194,7 @@ code {
 }
 
 .btn-primary, .btn-success, .btn-secondary, .btn-info, .btn-warning,
-.btn-danger, .btn-dark, .btn-pink, .btn-purple {
+.btn-danger, .btn-dark, .btn-pink, .btn-purple, .btn-login {
   color: #ffffff;
 }
 
@@ -1318,9 +1318,8 @@ a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-prima
 
 /*btn-danger*/
 .btn-danger {
-  margin-top: 14px;
-  background-color: #1c3c6e;
-  border: 1px solid #1c3c6e;
+  background-color: #f96e5b;
+  border: 1px solid #f96e5b;
   -webkit-box-shadow: 0 2px 6px 0 rgba(249, 110, 91, 0.5);
           box-shadow: 0 2px 6px 0 rgba(249, 110, 91, 0.5);
 }
@@ -1331,6 +1330,23 @@ a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-prima
 .open > .dropdown-toggle.btn-danger, .btn-outline-danger.active, .btn-outline-danger:active,
 .show > .btn-outline-danger.dropdown-toggle, .btn-outline-danger:hover, .btn-danger.active,
 .btn-danger:active, .show > .btn-danger.dropdown-toggle {
+  background-color: #f85842;
+  border: 1px solid #f85842;
+}
+
+
+/*btn-danger*/
+.btn-login {
+  margin-top: 14px;
+  background-color: #1c3c6e;
+  border: 1px solid #1c3c6e;
+  -webkit-box-shadow: 0 2px 6px 0 rgba(249, 110, 91, 0.5);
+          box-shadow: 0 2px 6px 0 rgba(249, 110, 91, 0.5);
+}
+
+.btn-login:not(:disabled):not(.disabled):active,
+.btn-login:active, .btn-login:focus, .btn-login:hover, .btn-login.active,
+.btn-login.focus, .btn-login:active, .btn-login:focus, .btn-login:hover {
   background-color: #1c3c6e;
   border: 1px solid #1c3c6e;
 }
@@ -3166,7 +3182,7 @@ label {
 }
 
 .wrapper-page .card {
-  border: 7px double #1c3c6e;
+  border: 7px double #5350a2;
   border-radius: 10px;
 }
 

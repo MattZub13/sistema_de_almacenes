@@ -29,7 +29,7 @@
 
                     <!-- Logo container-->
                     <div class="logo">
-                        <a href="index.html" class="logo">
+                        <a href="./dashboard.php" class="logo">
                             <i class="mdi mdi-bowling text-success mr-1"></i> <span class="hide-phone">Sistema de Almacenes UCB</span>
                         </a>
 
@@ -88,14 +88,12 @@
                                             <li><a href="./empleado.php">Empleados</a></li>
                                         </ul>
                                     </li>
-
-                                    <li class="has-submenu">
-                                        <a href="#">Oficina</a>
-                                        <ul class="submenu">
+                                    <li>
+                                        <ul>
                                             <li><a href="./oficina_dashboard.php">Oficinas</a></li>
-                                            <li><a href="./detalle_oficina.php">Detalles de Oficina</a></li>
                                         </ul>
                                     </li>
+
                                 </ul>
                             </li>
                             <li class="has-submenu">
@@ -135,7 +133,7 @@
                             <h4 class="page-title">Starter</h4>
                             <div class="btn-group mt-2">
                                 <ol class="breadcrumb hide-phone p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="#">Zoogler</a></li>
+                                    <li class="breadcrumb-item"><a href="#">UCB</a></li>
                                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                                     <li class="breadcrumb-item active">Starter</li>
                                 </ol>
