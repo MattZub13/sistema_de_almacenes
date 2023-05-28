@@ -23,13 +23,13 @@
         
         <!-- Begin page -->
         <div class="accountbg"></div>
-        <div class="wrapper-page">
+        <div class="wrapper-page" >
 
             <div class="card">
                 <div class="card-body">
 
                     <div class="text-center m-b-15">
-                        <a href="index.html" class="logo logo-admin"><img src="../public/assets/images/logo.png" height="24" alt="logo"></a>
+                        <a href="index.html" class="logo logo-admin"><img src="../public/assets/images/logo.png" height="64" alt="logo"></a>
                     </div>
 
                     <div class="p-3">
