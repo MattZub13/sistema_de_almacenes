@@ -4,16 +4,7 @@
             <div class="container-fluid">
 
                 <!-- Page-Title -->
-                <div class="row">
-                    <div class="page-title-box">
-                        <div class="col-sm-6 col-md-3  mt-4">
-                                        <div class="text-center">
-                                            <!-- Small modal -->
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Gestionar Sub-Almacen</button>
-                                        </div>
-                        </div>
-                    </div>
-                </div>
+              
                 <!-- end page title end breadcrumb -->
                 <div class="modal fade bs-example-modal-center" id="modal-body" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -50,6 +41,17 @@
 
                 <div class="row" id="subalmacen_row" >
 
+                </div>
+
+                <div class="row">
+                    <div class="page-title-box">
+                        <div class="col-sm-6 col-md-3  mt-4">
+                                        <div class="text-center">
+                                            <!-- Small modal -->
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Gestionar Sub-Almacen</button>
+                                        </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">

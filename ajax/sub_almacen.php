@@ -21,7 +21,7 @@ switch ($_GET["op"]){
 			$data[]=array(
 				"0"=>($reg['estado_sub_almacen'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_sub_almacen'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center"><i class="mdi mdi-send mr-2"></i>Editar</button>    '.
 					'    <button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_sub_almacen'].')"><i class="mdi mdi-power mr-2"></i>Desactivar</button>':
-					'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_sub_almacen'].')"><i class="mdi mdi-send mr-2"></i>Editar</button>'.
+					'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_sub_almacen'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center"><i class="mdi mdi-send mr-2"></i>Editar</button>    '.
 					'     <button class="btn btn-success wave	s-effect waves-light" onclick="activar('.$reg['id_sub_almacen'].')"><i class="mdi mdi-check-all mr-2"></i>Activar</button>',
 				"1"=>$reg['direccion_sub_almacen'],
                 "2"=>$reg['capacidad_sub_almacen'],
@@ -60,12 +60,12 @@ switch ($_GET["op"]){
 	break;
 
 	case '4'://obtencion del registro x para la edicion del mismo
-		$id=$_GET['id_sub_almacen'];
-		$rspta=$sub_almacen->mostrar($id);
+		
+		$rspta=$sub_almacen->mostrar($id_sub_almacen);
  		echo json_encode($rspta);
 	break;
 	case '5':
-		$rspta = $sub_almacen->listar();
+		$rspta = $sub_almacen->listar_grafica();
 
 		//se genera la tabla principal con los distintos campos
 		while ($reg = pg_fetch_assoc($rspta))

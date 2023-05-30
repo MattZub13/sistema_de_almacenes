@@ -45,22 +45,22 @@ switch ($_GET["op"]){
 
 		if (empty($id_proveedor)){
 			$rspta=$proveedor->insertar($nombre, $direccion, $correo);
-			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
+			echo $rspta ? "1:El Proveedor fué registrado" : "0:El Proveedor no fué registrado";
 		}else {
 			$rspta=$proveedor->editar($id_proveedor,$nombre,$direccion,$correo);
-			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
+			echo $rspta ? "1:El Proveedor fué actualizado" : "0:El Proveedor no fué actualizado";
 
 		}
 			
 	break;
 	case '2'://desactivacion del proveedor
 		$rspta=$proveedor->desactivar($id_proveedor);
- 		echo $rspta ? "1:El Artículo fué Desactivado" : "0:El Artículo no fué Desactivado";
+ 		echo $rspta ? "1:El Proveedor fué Desactivado" : "0:El Proveedor no fué Desactivado";
 	break;
 
 	case '3'://activacion del proveedor
 		$rspta=$proveedor->activar($id_proveedor);
- 		echo $rspta ? "1:El Artículo fué Activado" : "0:El Artículo no fué Activado";
+ 		echo $rspta ? "1:El Proveedor fué Activado" : "0:El Proveedor no fué Activado";
 	break;
 
 	case '4'://obtencion del registro x para la edicion del mismo

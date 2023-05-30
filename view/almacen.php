@@ -2,19 +2,15 @@
 
 <div class="wrapper">
             <div class="container-fluid">
-                <div class="row">
-                    <a href="../view/detalle_almacen.php" class="btn btn-primary waves-effect waves-light">Lista Almacen</a>
-                </div>
-                <div class="row">
-                <div id="donut-example"></div>
-                </div>
+
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="page-title-box">
+
                         <div class="col-sm-6 col-md-3  mt-4">
                                         <div class="text-center">
                                             <!-- Small modal -->
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Nuevo Almacen</button>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".solicitud">Nueva Solicitud</button>
                                         </div>
                         </div>
                     </div>
@@ -74,7 +70,7 @@
                 </div><!-- /.modal -->
 
                 <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="card" id="listadoregistros">
                                 <div class="card-body">
 
@@ -96,6 +92,32 @@
                                         <tbody></tbody>
                                     </table>
 
+                                    <div id="donut-example"></div>
+
+                                </div>
+                            </div>
+
+                           
+                        </div> <!-- end col -->
+
+                     <div class="col-6">
+                            <div class="card" id="listadosolicitudes">
+                                <div class="card-body">
+
+                                    <h4 class="mt-0 header-title">Solicitudes</h4>
+
+                                    <table class="table mb-0" id="tbsolicitud">
+                                        <thead>
+                                        <tr>
+                                            <th>Opciones</th>
+                                            <th>Fecha</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody></tbody>
+                                    </table>
+
                                 </div>
                             </div>
                      </div> <!-- end col -->
@@ -103,15 +125,10 @@
 
 
 
-                <div class="col-sm-6 col-md-3  mt-4">
-                                        <div class="text-center">
-                                            <!-- Small modal -->
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-animation="bounce" data-target=".solicitud">Nueva Solicitud</button>
-                                        </div>
-                        </div>
+              
 
 
-                        <div class="modal fade bs-example-modal-center solicitud" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="static">
+                <div class="modal fade bs-example-modal-center solicitud" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="static">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -125,7 +142,7 @@
                                     <form name="formulario_solicitud" id="formulario_solicitud" method="POST">
 
                                         <div>
-                                            <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardarSolicitud"></i>Guardar</button>
+                                            <button type="submit" class="btn btn-outline-primary waves-effect waves-light"><i class="mdi mdi-send mr-2" id="btnGuardarSolicitud"></i>Empezar Solicitud</button>
                                         </div>
                                     </form>
                                 </div>
@@ -134,7 +151,7 @@
                                     <input type="hidden" name="id_solicitud" id="id_solicitud">
 
                                     <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Placa de Vehiculo:</label>
+                                            <label class="col-sm-3 col-form-label">Proveedor:</label>
                                             <div class="col-sm-9">
                                                 <select class="form-control" id="proveedor_solicitud" name="proveedor_solicitud">
                                                 </select>
@@ -142,7 +159,7 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Placa de Vehiculo:</label>
+                                            <label class="col-sm-3 col-form-label">Articulo:</label>
                                             <div class="col-sm-9">
                                                 <select class="form-control" id="articulo_solicitud" name="articulo_solicitud">
                                                 </select>
@@ -150,7 +167,7 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="precio" class="col-sm-3 col-form-label">Precio Unitario: </label>
+                                            <label for="precio" class="col-sm-3 col-form-label">Cantidad: </label>
                                             <div class="col-sm-9">
                                                 <input class="form-control" type="number" min="0" name="cantidad" id="cantidad">
                                             </div>
@@ -172,7 +189,7 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title mt-0" id="mySmallModalLabel">Small modal</h5>
+                                                        <h5 class="modal-title mt-0" id="mySmallModalLabel">Detalle Solicitud</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
                                                     <div class="modal-body">
@@ -183,29 +200,6 @@
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
 
-        <div class="row">
-                        <div class="col-12">
-                            <div class="card" id="listadoregistros">
-                                <div class="card-body">
-
-                                    <h4 class="mt-0 header-title">Default Datatable</h4>
-
-                                    <table class="table mb-0" id="tbsolicitud">
-                                        <thead>
-                                        <tr>
-                                            <th>Opciones</th>
-                                            <th>Fecha</th>
-                                            <th>Estado</th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody></tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                     </div> <!-- end col -->
-                </div> <!-- end row -->
 
             </div> <!-- end container -->
         </div>

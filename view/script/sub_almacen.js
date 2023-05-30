@@ -35,9 +35,6 @@ function limpiar()
 }
 
 
-
-
-
 function listar(){
     tabla=$('#tbllistado').DataTable(
         {
@@ -107,9 +104,6 @@ function guardaryeditar(e) {
 	});
 }
 
-// function cerrarFormulario() {
-//     $("#modal-body").hide(); 
-// }
 
 function mostrar(id_sub_almacen)
 {
@@ -149,6 +143,7 @@ function desactivar(id_sub_almacen)
 							'success'
 						);  
 						tabla.ajax.reload();
+						location.reload(); // Recargar la página
 					}	
 					else{
 						Swal.fire({
@@ -186,6 +181,7 @@ function activar(id_sub_almacen)
 							'success'
 						);  
 						tabla.ajax.reload();
+						location.reload(); // Recargar la página
 					}	
 					else{
 						Swal.fire({

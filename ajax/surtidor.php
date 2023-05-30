@@ -44,7 +44,7 @@ switch ($_GET["op"]){
 				echo $rspta ? "1:El Surtidor fué registrado" : "0:El Surtidor no fué registrado";
 			}else{
 				$rspta=$surtidor->editar($id_surtidor,$telefono,$ubicacion);
-				echo $rspta ? "1:surtidor Actualizada" : "0:surtidor no Actualizada";
+				echo $rspta ? "1:surtidor Actualizado" : "0:surtidor no Actualizada";
 			}
 	break;
 	case '2'://desactivacion del surtidor
@@ -53,7 +53,7 @@ switch ($_GET["op"]){
 	break;
 	case '3'://activacion del surtidor
 		$rspta=$surtidor->activar($id_surtidor);
-		echo $rspta ? "1:La surtidor fué Activada" : "0:La surtidor no fué Activada";
+		echo $rspta ? "1:La surtidor fué Activado" : "0:La surtidor no fué Activada";
 	break;
 	case '4'://obtencion del registro x para la edicion del mismo
 		$rspta=$surtidor->mostrar($id_surtidor);

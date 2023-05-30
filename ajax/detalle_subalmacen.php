@@ -26,7 +26,7 @@ switch ($_GET["op"]){
 		//se genera la tabla principal con los distintos campos
 		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
-				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Editar</button>',
+				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>',
                 "1"=>$reg['fecha_solicitud'],
 				"2"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
 					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
@@ -39,27 +39,14 @@ switch ($_GET["op"]){
  			"aaData"=>$data);
  		echo json_encode($results);
 		break;
-	case '1'://insertacion o edicion del registro
-		
-		if (empty($id_detalle)){
-			$id=$_GET['id_sub_almacen'];	
-			$rspta=$detalle->insertar($id,$articulo, $cantidad);
-			echo $rspta ? "1:El Artículo fué agregado" : "0:El Artículo no fué agregado";
-		}else {
-			$rspta=$detalle->editar($id,$articulo,$cantidad,$id_detalle);
-			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
-
-		}
-			
-	break;
 	case '2'://desactivacion del articulo
 		$rspta=$detalle->insertar_solicitud($id_sub_almacen);
-			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
+			echo $rspta ? "1:Empieza a añadir articulos a la solicitud" : "0:El Artículo no fué registrado";
 	break;
 
 	case '3'://activacion del articulo
 		$rspta=$detalle->insertar_detalle_sub_almacen($id_solicitud,$id_articulo,$cantidad);
-			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
+			echo $rspta ? "1:El Artículo fué insertado" : "0:El Artículo no fué insertado";
 	break;
 
 	case '4'://obtencion del registro x para la edicion del mismo
@@ -97,7 +84,7 @@ switch ($_GET["op"]){
 			echo $rspta ? "1:El Artículo fué agregado" : "0:El Artículo no fué agregado";
 		}else {
 			$rspta=$detalle->editar($id,$articulo,$cantidad,$id_detalle);
-			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
+			echo $rspta ? "1:El Artículo fué insertado" : "0:El Artículo no fué insertado";
 
 		}
 			

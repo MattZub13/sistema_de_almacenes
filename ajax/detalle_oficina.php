@@ -25,7 +25,7 @@ switch ($_GET["op"]){
 		//se genera la tabla principal con los distintos campos
 		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
-				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Editar</button>',
+				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>',
 				"1"=>$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno'],
                 "2"=>$reg['fecha_solicitud'],
 				"3"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
@@ -41,20 +41,14 @@ switch ($_GET["op"]){
 		break;
 	case '1'://insertacion o edicion del registro
 
-		if (empty($id_solicitud)){
 			$rspta=$solicitud->insertar($id_empleado, $id_oficina);
-			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
-		}else {
-			$rspta=$solicitud->editar($id_solicitud,$id_empleado,$id_oficina);
-			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
-
-		}
-			
+			echo $rspta ? "1:Empieza a añadir articulos a la solicitud" : "0:El Artículo no fué registrado";
+		
 	break;
 	case '2'://desactivacion del detalle_oficina
 		
 			$rspta=$solicitud->insertar_detalle_oficina($id_solicitud,$id_sub_almacen,$id_articulo,$cantidad);
-			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
+			echo $rspta ? "1:El Artículo fué insertado" : "0:El Artículo no fué insertado";
 
 	break;
 
@@ -88,6 +82,27 @@ switch ($_GET["op"]){
  		//Codificar el resultado utilizando json
  		echo ($rspta);
 	break;
+
+	case '6':
+		$id=$_GET['id_oficina'];
+		$rspta = $solicitud->detalle_articulo($id);
+       //Vamos a declarar un array
+ 		$data= Array();
+
+         //se genera la tabla principal con los distintos campos
+          while ($reg = pg_fetch_assoc($rspta)){
+             $data[]=array(
+                 "0"=>$reg['nombre_articulo'],
+                 "1"=>$reg['cantidad'],
+                 );
+         }
+          $results = array(
+              "sEcho"=>1, //Información para el datatables
+              "iTotalRecords"=>count($data), //enviamos el total registros al datatable
+              "iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
+              "aaData"=>$data);
+          echo json_encode($results);
+		break;
 
 }
 ?>

@@ -27,7 +27,7 @@ Class Almacen
     public function editar($id_almacen,$nombre, $direccion, $telefono,$responsable, $capacidad)
     {
     
-		  $sql="UPDATE almacen SET nombre_almacen='$nombre',direccion='$direccion',telefono='$telefono',responsable='$responsable', capacidad = '$capacidad' WHERE id_almacen='$id_almacen';";
+		  $sql="UPDATE almacen SET nombre_almacen='$nombre',direccion_almacen='$direccion',telefono='$telefono',responsable='$responsable', capacidad = '$capacidad' WHERE id_almacen='$id_almacen';";
       return ejecutarConsulta($sql);
 		
     }

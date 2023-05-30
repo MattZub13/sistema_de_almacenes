@@ -18,6 +18,15 @@ Class Solicitud{
       return ejecutarConsulta($sql);
     }
 
+    public function detalle_articulo($id_oficina)
+  {
+    
+    $sql="SELECT d.cantidad,  a.nombre_articulo
+    FROM articulo a, detalle_oficina d
+    WHERE(d.id_articulo=a.id_articulo) AND (id_oficina='$id_oficina');";
+    return ejecutarConsulta($sql);
+  }
+
     public function listar_solicitud_oficina($id_oficina)
     {
       $sql="SELECT s.id_solicitud,s.fecha_solicitud,s.id_empleado,s.estado_solicitud,e.id_empleado,e.nombre,e.apellido_paterno,e.apellido_materno

@@ -19,7 +19,7 @@
                 </div>
                 <div class="modal-body">
                     <form name="formulario" method="POST" id="formulario">
-                        <input type="text" name="id_vs" id="id_vs">
+                        <input type="hidden" name="id_vs" id="id_vs">
                         <label for="tipo">Ingrese el tipo del Vehiculo</label>
                         <select class="form-control" name="tipo" id="tipo">
                         </select>

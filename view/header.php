@@ -75,6 +75,7 @@
                                         <ul>
                                             <li><a href="./vehiculo.php">Automoviles</a></li>
                                             <li><a href="./surtidor.php">Surtidor</a></li>
+                                            <li><a href="./vehiculo_surtidor.php">Destino de recarga</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -87,11 +88,8 @@
                                     <li>
                                         <ul>
                                             <li><a href="./empleado.php">Empleados</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
                                             <li><a href="./oficina_dashboard.php">Oficinas</a></li>
+                                            <li><a href="./proveedor.php">Proveedores</a></li>
                                         </ul>
                                     </li>
 

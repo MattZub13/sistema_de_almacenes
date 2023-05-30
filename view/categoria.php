@@ -35,7 +35,7 @@
             <div class="card">
                 <div class="card-body" id="listadoregistros">
 
-                    <h4>Tabla de Datos</h4>
+                    <h4>Categorias</h4>
 
                         <table class="table mb-0" id="tableLista">
                             <thead>

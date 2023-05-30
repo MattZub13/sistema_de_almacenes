@@ -66,7 +66,7 @@
                             <div class="card" id="listadoregistros">
                                 <div class="card-body">
 
-                                    <h4 class="mt-0 header-title">Default Datatable</h4>
+                                    <h4 class="mt-0 header-title">Articulos</h4>
 
                                     <table class="table mb-0" id="tbllistado">
                                         <thead>

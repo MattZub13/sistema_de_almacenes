@@ -20,42 +20,25 @@ $cantidad=isset($_POST["cantidad"])? $_POST["cantidad"]:"";
 //obtencion de la operacion del .js
 switch ($_GET["op"]){
 	case '0'://obtencion de los datos para la tabla principal
-		$rspta=$detalle->listar();
+		$rspta=$detalle->listar_detalle_almacen();
  		//Vamos a declarar un array
  		$data= Array();
 
 		//se genera la tabla principal con los distintos campos
- 		while ($reg = pg_fetch_assoc($rspta)){
-			$data[]=array(
-				"0"=>($reg['estado_detalle'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_detalle'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.
-					'<button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_detalle'].')">Desactivar</i></button>':
-					'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_detalle'].')">Editar</button>'.
-					'<button class="btn btn-purple waves-effect waves-light" onclick="activar('.$reg['id_detalle'].')">Activar</i></button>',
-				"1"=>$reg['nombre_articulo'],
-                "2"=>$reg['cantidad'],
-				"3"=>($reg['estado_detalle'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
-					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
-				);
+ 		while ($reg = pg_fetch_assoc($rspta)){	
+				$data[] = array('y' => $reg['nombre_articulo'], 'a' => $reg['cantidad']);
 		}
- 		$results = array(
- 			"sEcho"=>1, //Información para el datatables
- 			"iTotalRecords"=>count($data), //enviamos el total registros al datatable
- 			"iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
- 			"aaData"=>$data);
- 		echo json_encode($results);
+		$json_data = json_encode($data);
+		echo '<script>
+		new Morris.Bar({
+			element:"donut-example",
+			data: '.$json_data.',
+			xkey: "y",
+			ykeys:"a",
+			labels: "Series A"
+		  });
+						</script>';
 		break;
-	case '1'://insertacion o edicion del registro
-
-		if (empty($id_detalle)){
-			$rspta=$detalle->insertar($articulo, $cantidad);
-			echo $rspta ? "1:El Artículo fué agregado" : "0:El Artículo no fué agregado";
-		}else {
-			$rspta=$detalle->editar($id_detalle,$articulo,$cantidad);
-			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
-
-		}
-			
-	break;
 	case '2'://desactivacion del articulo
 		
 		$rspta=$detalle->listar_solicitud_almacen();
@@ -64,7 +47,7 @@ switch ($_GET["op"]){
 		//se genera la tabla principal con los distintos campos
 		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
-				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Editar</button>',
+				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>',
                 "1"=>$reg['fecha_solicitud'],
 				"2"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
 					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
@@ -80,16 +63,12 @@ switch ($_GET["op"]){
 
 	case '3'://activacion del articulo
 		$rspta=$detalle->insertar_solicitud();
-			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
+			echo $rspta ? "1:Empieza a añadir articulos a la solicitud" : "0:El Artículo no fué registrado";
 	break;
 
-	case '4'://obtencion del registro x para la edicion del mismo
-		$rspta=$detalle->mostrar($id_detalle);
- 		echo json_encode($rspta);
-	break;
 	case '5':
 		$rspta=$detalle->insertar_detalle_almacen($id_solicitud,$id_proveedor,$id_articulo,$cantidad);
-			echo $rspta ? "1:El Artículo fué actualizado" : "0:El Artículo no fué actualizado";
+			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
 	break;
 	case '6':
 		//Recibimos el idingreso

@@ -37,10 +37,10 @@ switch ($_GET["op"]){
 
             if (empty($id_vs)){
                 $rspta=$vehiculo->insertar($tipo,$ubicacion,$fecha);
-                echo $rspta ? "1:El Vehiculo fué registrado" : "0:El Vehiculo no fué registrado";
+                echo $rspta ? "1:El Vehiculo fué asignado hasta la fecha".$fecha : "0:El Vehiculo no fué registrado";
             }else {
                 $rspta=$vehiculo->editar($tipo,$ubicacion,$fecha,$id_vs);
-                echo $rspta ? "1:El Vehiculo fué actualizado" : "0:El Vehiculo no fué actualizado";
+                echo $rspta ? "1:El Vehiculo fué asignado hasta la fecha".$fecha : "0:El Vehiculo no fué actualizado";
     
             }
                 

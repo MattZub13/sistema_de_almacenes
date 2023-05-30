@@ -43,7 +43,7 @@ switch ($_GET["op"]){
 				echo $rspta ? "1:El vehiculo fué registrado" : "0:El vehiculo no fué registrado";
 			}else{
 				$rspta=$vehiculo->editar($id_vehiculo,$tipo,$placa);
-				echo $rspta ? "1:vehiculo Actualizada" : "0:vehiculo no Actualizada";
+				echo $rspta ? "1:vehiculo Actualizado" : "0:vehiculo no Actualizada";
 			}
 	break;
 	case '2'://desactivacion del vehiculo

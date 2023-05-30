@@ -18,6 +18,15 @@ Class Sub_almacen{
       return ejecutarConsulta($sql);
     }
 
+    public function listar_grafica()
+    {
+      $sql="SELECT s.id_sub_almacen, s.direccion_sub_almacen, s.capacidad_sub_almacen, o.nombre_oficina, s.estado_sub_almacen
+      FROM sub_almacen s, oficina o
+      WHERE(s.id_oficina=o.id_oficina) AND (s.estado_sub_almacen=1) ";
+      return ejecutarConsulta($sql);
+    }
+
+
     public function insertar($direccion, $capacidad, $id_oficina)
     {
     
@@ -57,9 +66,9 @@ Class Sub_almacen{
 
   public function select_grafica($id_sub_almacen)
   {
-    $sql="SELECT d.id_sub_almacen,d.id_articulo,a.nombre_articulo,d.cantidad 
+    $sql="SELECT d.id_sub_almacen,d.id_articulo,a.nombre_articulo,d.cantidad
     FROM detalle_subalmacen d,articulo a
-    WHERE (d.id_articulo=a.id_articulo) AND (d.id_sub_almacen='$id_sub_almacen');";
+    WHERE (d.id_articulo=a.id_articulo) AND (d.id_sub_almacen='$id_sub_almacen') ;";
 		return ejecutarConsulta($sql);		
   }
 

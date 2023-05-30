@@ -12,15 +12,25 @@ var barData = [
   ];
   
   function init() {
-	new Morris.Bar({
-	  element: 'donut-example',
-	  data: barData,
-	  xkey: 'y',
-	  ykeys: ['a', 'b'],
-	  labels: ['Series A', 'Series B']
+	
+
+	$("#formulario").on("submit",function(e){
+		editar_almacen(e);	
 	});
+
 	listar();
+	grafica_almacen();
   }
+
+
+function grafica_almacen(){
+	$.post("../ajax/detalle_almacen.php?op=0", function(r){
+	    $("#donut-example").html(r);
+		$('#donut-example').trigger('change.select2');
+	});
+
+	
+}
 
 //Función limpiar
 function limpiar()
@@ -67,7 +77,7 @@ function listar(){
 
 //Función para guardar o editar
 
-function guardaryeditar(e)
+function editar_almacen(e)
 {
     
 	e.preventDefault(); //No se activará la acción predeterminada del evento
@@ -110,8 +120,8 @@ function guardaryeditar(e)
     limpiar();
 }
 
-function mostrar(id_almacen) {
-    $.post("../ajax/almacen.php?op=4", { id_almacen: id_almacen }, function (data, status) {
+function mostrar_datos_almacen(id_almacen) {
+    $.post("../ajax/almacen.php?op=2", { id_almacen: id_almacen }, function (data, status) {
         data = JSON.parse(data);
         console.log(data);
         $("#id_almacen").val(data.id_almacen);
@@ -123,80 +133,5 @@ function mostrar(id_almacen) {
 
     });
 }
-
-//Función para desactivar registros
-function desactivar(id_almacen)
-{
-	swal.fire({
-		title: 'Mensaje de Confirmación',
-		text: "¿Desea desactivar el Registro?",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Desactivar'
-	}).then((result) => {
-		if (result.value) {
-			$.post("../ajax/almacen.php?op=2", {id_almacen : id_almacen}, function(e){
-				mensaje=e.split(":");
-					if(mensaje[0]=="1"){  
-						swal.fire(
-							'Mensaje de Confirmación',
-							mensaje[1],
-							'success'
-						);  
-						tabla.ajax.reload();
-					}	
-					else{
-						Swal.fire({
-							type: 'error',
-							title: 'Error',
-							text: mensaje[1],
-							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
-						});
-					}			
-        	});	
-		}
-	});   
-}
-
-//Función para activar registros
-function activar(id_almacen)
-{
-	swal.fire({
-		title: 'Mensaje de Confirmación',
-		text: "¿Desea activar el Registro?",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		cancelButtonText: 'Cancelar',
-		confirmButtonText: 'Activar'
-	}).then((result) => {
-		if (result.value) {
-			$.post("../ajax/almacen.php?op=3", {id_almacen : id_almacen}, function(e){
-				mensaje=e.split(":");
-					if(mensaje[0]=="1"){  
-						swal.fire(
-							'Mensaje de Confirmación',
-							mensaje[1],
-							'success'
-						);  
-						tabla.ajax.reload();
-					}	
-					else{
-						Swal.fire({
-							type: 'error',
-							title: 'Error',
-							text: mensaje[1],
-							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
-						});
-					}			
-        	});	
-		}
-	}); 
-}
-
 
 init();
