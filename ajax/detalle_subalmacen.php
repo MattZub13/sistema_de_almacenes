@@ -28,8 +28,8 @@ switch ($_GET["op"]){
 			$data[]=array(
 				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>',
                 "1"=>$reg['fecha_solicitud'],
-				"2"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
-					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
+				"2"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Completada</span>':
+					'<span class="badge badge-pill badge-outline-danger">En proceso</span>'
 				);
 		}
  		$results = array(
@@ -39,21 +39,21 @@ switch ($_GET["op"]){
  			"aaData"=>$data);
  		echo json_encode($results);
 		break;
-	case '2'://desactivacion del articulo
+	case '1'://desactivacion del articulo
 		$rspta=$detalle->insertar_solicitud($id_sub_almacen);
 			echo $rspta ? "1:Empieza a añadir articulos a la solicitud" : "0:El Artículo no fué registrado";
 	break;
 
-	case '3'://activacion del articulo
+	case '2'://activacion del articulo
 		$rspta=$detalle->insertar_detalle_sub_almacen($id_solicitud,$id_articulo,$cantidad);
 			echo $rspta ? "1:El Artículo fué insertado" : "0:El Artículo no fué insertado";
 	break;
 
-	case '4'://obtencion del registro x para la edicion del mismo
+	case '3'://obtencion del registro x para la edicion del mismo
 		$rspta=$detalle->mostrar($id_detalle);
  		echo json_encode($rspta);
 	break;
-    case '5'://generacion de opcion para un select donde se lo requiera
+    case '4'://generacion de opcion para un select donde se lo requiera
 		$id=$_GET['id_sub_almacen'];
 		$rspta = $detalle->detalle_articulo($id);
        //Vamos a declarar un array
@@ -76,7 +76,7 @@ switch ($_GET["op"]){
 	break;
 
 
-	case '6'://insertacion o edicion del registro
+	case '5'://insertacion o edicion del registro
 		
 		if (empty($id_detalle)){
 			$id=$_GET['id_sub_almacen'];	
@@ -90,12 +90,12 @@ switch ($_GET["op"]){
 			
 	break;
 
-	case '7':
+	case '6':
 		$rspta=$detalle->obtenerUltimoId();
  		//Codificar el resultado utilizando json
  		echo ($rspta);
 	break;
-	case '8':
+	case '7':
 		//Recibimos el idingreso
 		$id=$_GET['id_solicitud'];
 

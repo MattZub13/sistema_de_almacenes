@@ -3,7 +3,6 @@ var tablas;
 
 function init(){
     //Para validación
-	listar();
 	listar_solicitud();
 	mostrarform(true);
 	
@@ -73,7 +72,7 @@ function listar_solicitud(){
             "ajax":
                     {
                         
-                        url: "../ajax/detalle_almacen.php?op=2",
+                        url: "../ajax/detalle_almacen.php?op=1",
                         type : "get",
                         dataType : "json",						
                         error: function(e){
@@ -95,7 +94,7 @@ function guardar_solicitud(e)
 	$("#btnGuardarSolicitud").prop("disabled",true);
 	var formData = new FormData($("#formulario_solicitud")[0]);
 	$.ajax({
-		url: "../ajax/detalle_almacen.php?op=3",
+		url: "../ajax/detalle_almacen.php?op=2",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -172,14 +171,14 @@ function guardar_detalle(e)
 }
 
 function obtener_id(){
-	$.post("../ajax/detalle_subalmacen.php?op=7", function(data, status)
+	$.post("../ajax/detalle_almacen.php?op=5", function(data, status)
       {
 		$("#id_solicitud").val(data);
 	});
 }
 
 function detalle_solicitud(id_solicitud){
-	$.post("../ajax/detalle_almacen.php?op=6&id_solicitud="+parseInt(id_solicitud), function(r)
+	$.post("../ajax/detalle_almacen.php?op=4&id_solicitud="+parseInt(id_solicitud), function(r)
 	{
 		$("#detalles").html(r);
  	});

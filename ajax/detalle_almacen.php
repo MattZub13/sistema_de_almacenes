@@ -39,7 +39,7 @@ switch ($_GET["op"]){
 		  });
 						</script>';
 		break;
-	case '2'://desactivacion del articulo
+	case '1'://desactivacion del articulo
 		
 		$rspta=$detalle->listar_solicitud_almacen();
  		//Vamos a declarar un array
@@ -49,8 +49,8 @@ switch ($_GET["op"]){
 			$data[]=array(
 				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>',
                 "1"=>$reg['fecha_solicitud'],
-				"2"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
-					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
+				"2"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Completado</span>':
+					'<span class="badge badge-pill badge-outline-danger">En proceso</span>'
 				);
 		}
  		$results = array(
@@ -61,16 +61,16 @@ switch ($_GET["op"]){
  		echo json_encode($results);
 	break;
 
-	case '3'://activacion del articulo
+	case '2'://activacion del articulo
 		$rspta=$detalle->insertar_solicitud();
 			echo $rspta ? "1:Empieza a añadir articulos a la solicitud" : "0:El Artículo no fué registrado";
 	break;
 
-	case '5':
+	case '3':
 		$rspta=$detalle->insertar_detalle_almacen($id_solicitud,$id_proveedor,$id_articulo,$cantidad);
 			echo $rspta ? "1:El Artículo fué registrado" : "0:El Artículo no fué registrado";
 	break;
-	case '6':
+	case '4':
 		//Recibimos el idingreso
 		$id=$_GET['id_solicitud'];
 
@@ -87,6 +87,11 @@ switch ($_GET["op"]){
 					
 				}
 		echo '</tr>';
+	break;
+	case '5':
+		$rspta=$detalle->obtenerUltimoId();
+ 		//Codificar el resultado utilizando json
+ 		echo ($rspta);
 	break;
 
 }

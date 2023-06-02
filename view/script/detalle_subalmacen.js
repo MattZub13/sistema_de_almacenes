@@ -86,7 +86,7 @@ function guardar_solicitud(e)
 	$("#btnGuardarSolicitud").prop("disabled",true);
 	var formData = new FormData($("#formulario_solicitud")[0]);
 	$.ajax({
-		url: "../ajax/detalle_subalmacen.php?op=2",
+		url: "../ajax/detalle_subalmacen.php?op=1",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -128,7 +128,7 @@ function guardar_detalle(e)
 	$("#btnGuardarDetalle").prop("disabled",true);
 	var formData = new FormData($("#detalle_form")[0]);
 	$.ajax({
-		url: "../ajax/detalle_subalmacen.php?op=3",
+		url: "../ajax/detalle_subalmacen.php?op=2",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -163,7 +163,7 @@ function guardar_detalle(e)
 }
 
 function obtener_id(){
-	$.post("../ajax/detalle_subalmacen.php?op=7", function(data, status)
+	$.post("../ajax/detalle_subalmacen.php?op=6", function(data, status)
       {
 		$("#id_solicitud").val(data);
 	});
@@ -189,7 +189,7 @@ function listar_articulos(id_sub_almacen)
             "ajax":
                     {
                         
-                        url: '../ajax/detalle_subalmacen.php?op=5&id_sub_almacen='+parseInt(id_sub_almacen),
+                        url: '../ajax/detalle_subalmacen.php?op=4&id_sub_almacen='+parseInt(id_sub_almacen),
                         type : "get",
                         dataType : "json",						
                         error: function(e){
@@ -204,7 +204,7 @@ function listar_articulos(id_sub_almacen)
 }
 
 function detalle_solicitud(id_solicitud){
-	$.post("../ajax/detalle_subalmacen.php?op=8&id_solicitud="+parseInt(id_solicitud), function(r)
+	$.post("../ajax/detalle_subalmacen.php?op=7&id_solicitud="+parseInt(id_solicitud), function(r)
 	{
 		$("#detalles").html(r);
  	});

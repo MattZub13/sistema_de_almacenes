@@ -28,8 +28,8 @@ switch ($_GET["op"]){
 				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>',
 				"1"=>$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno'],
                 "2"=>$reg['fecha_solicitud'],
-				"3"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
-					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
+				"3"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Completado</span>':
+					'<span class="badge badge-pill badge-outline-danger">En proceso</span>'
 				);
 		}
  		$results = array(
