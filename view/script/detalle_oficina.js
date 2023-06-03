@@ -267,4 +267,41 @@ function empleados(id_oficina){
 	});
 }
 
+
+function completar(id_solicitud)
+{
+	swal.fire({
+		title: 'Mensaje de Confirmación',
+		text: "¿La solicitud fue completada?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Completada'
+	}).then((result) => {
+		if (result.value) {
+			$.post("../ajax/detalle_oficina.php?op=7", {id_solicitud : id_solicitud}, function(e){
+				mensaje=e.split(":");
+					if(mensaje[0]=="1"){  
+						swal.fire(
+							'Mensaje de Confirmación',
+							mensaje[1],
+							'success'
+						);  
+						tabla.ajax.reload();
+					}	
+					else{
+						Swal.fire({
+							type: 'error',
+							title: 'Error',
+							text: mensaje[1],
+							footer: 'Verifique la información de Registro, en especial que la información no fué ingresada previamente a la Base de Datos.'
+						});
+					}			
+        	});	
+		}
+	}); 
+}
+
 init();

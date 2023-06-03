@@ -4,36 +4,6 @@
         <div class="wrapper">
             <div class="container-fluid">
 
-                <!-- Page-Title -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-title-box">
-                            <div class="float-right hide-phone">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item mr-3">
-                                        <input class="knob" data-width="48" data-height="48" data-linecap=round
-                                                           data-fgColor="#605daf" value="80" data-skin="tron" data-angleOffset="180"
-                                                           data-readOnly=true data-thickness=".1"/>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span class="text-muted">Storage used</span>
-                                        <h6>400GB/524.84GB</h6>
-                                    </li>
-                                </ul>                                
-                            </div>
-                            <h4 class="page-title">Dashboard</h4>
-                            <div class="btn-group mt-2">
-                                <ol class="breadcrumb hide-phone p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="#">Zoogler</a></li>
-                                    <li class="breadcrumb-item active">Dashboard</li>
-                                </ol>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <!-- end page title end breadcrumb -->
-
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="row">
@@ -46,8 +16,8 @@
                                                     <i class="fas fa-tasks text-gradient-success"></i>
                                                 </div>
                                                 <div class="col-10 text-right">
-                                                    <h5 class="mt-0 mb-1">190</h5>
-                                                    <p class="mb-0 font-12 text-muted">Active Tasks</p>   
+                                                    <h5 id="solicitudes" class="mt-0 mb-1"></h5>
+                                                    <p class="mb-0 font-12 text-muted">Solicitudes Pendientes</p>   
                                                 </div>
                                             </div>                                                        
                                         </div>
@@ -63,8 +33,8 @@
                                                     <i class="far fa-gem text-gradient-danger"></i>
                                                 </div>
                                                 <div class="col-10 text-right">
-                                                    <h5 class="mt-0 mb-1">62</h5>
-                                                    <p class="mb-0 font-12 text-muted">Project</p>
+                                                    <h5 id="articulos" class="mt-0 mb-1"></h5>
+                                                    <p class="mb-0 font-12 text-muted">Distintos Articulos</p>
                                                 </div>
                                             </div>                                                        
                                         </div>
@@ -80,8 +50,8 @@
                                                     <i class="fas fa-users text-gradient-warning"></i>
                                                 </div>
                                                 <div class="col-10 text-right">
-                                                    <h5 class="mt-0 mb-1">14</h5>
-                                                    <p class="mb-0 font-12 text-muted">Teams</p>    
+                                                    <h5 id="empleados" class="mt-0 mb-1"></h5>
+                                                    <p class="mb-0 font-12 text-muted">Empleados</p>    
                                                 </div>
                                             </div>                                                        
                                         </div>                                                    
@@ -105,21 +75,15 @@
                                     </div>
                                 </div>
                             </div>                                             
-                        </div> 
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                                    <label class="btn btn-primary btn-sm active">
-                                        <input type="radio" name="options" id="option1" checked=""> This Week
-                                    </label>
-                                    <label class="btn btn-primary btn-sm">
-                                        <input type="radio" name="options" id="option2"> Last Month
-                                    </label>                                                
-                                </div>
-                                <h5 class="header-title mb-4 mt-0">Weekly Record</h5>
-                                <canvas id="lineChart" height="80"></canvas>
-                            </div>
-                        </div>                                    
+                        </div>
+                        <h3>Oficinas</h3>
+                        <div class="row" id="oficinas">
+                            
+                           
+                        
+                       
+                        </div>
+                                               
                     </div>
                     <div class="col-lg-3">
                         <div class="card">
@@ -134,15 +98,11 @@
                                         <a class="dropdown-item" href="#">Tasks Details</a>
                                     </div>
                                 </div>
-                                <h5 class="header-title mb-4 mt-0">Activity</h5>
-                                <div>
-                                    <canvas id="dash-doughnut" height="200"></canvas>
+                                <h5 class="header-title mb-4 mt-0">Solicitudes</h5>
+                                <div id="solicitud_donut">
+                                   
                                 </div>
-                                <ul class="list-unstyled list-inline text-center mb-0 mt-3">
-                                    <li class="mb-2 list-inline-item text-muted font-13"><i class="mdi mdi-label text-success mr-2"></i>Active</li>
-                                    <li class="mb-2 list-inline-item text-muted font-13"><i class="mdi mdi-label text-danger mr-2"></i>Complete</li>
-                                    <li class="mb-2 list-inline-item text-muted font-13"><i class="mdi mdi-label text-warning mr-2"></i>Panding</li>
-                                </ul>
+                               
                             </div>                               
                         </div>
                         <div class="card">
@@ -178,108 +138,10 @@
                                         <a class="dropdown-item" href="#">Open Messages</a>
                                     </div>
                                 </div>
-                                <h5 class="header-title pb-3 mt-0">New Clients</h5>
+                                <h5 class="header-title pb-3 mt-0">Proveedores</h5>
                                 <div class="table-responsive boxscroll" style="overflow: hidden; outline: none;">
                                     <table class="table mb-0">                                                                
-                                        <tbody>
-                                            <tr>
-                                                <td class="border-top-0">
-                                                    <div class="media">
-                                                        <img src="public/assets/images/users/avatar-2.jpg" alt="" class="thumb-md rounded-circle"> 
-                                                        <div class="media-body ml-2">
-                                                            <p class="mb-0">Roy Saunders <span class="badge badge-soft-danger">USA</span></p>
-                                                            <span class="font-12 text-muted">CEO of facebook</span>
-                                                        </div>
-                                                    </div>                                                                            
-                                                </td> 
-                                                <td class="border-top-0 text-right">
-                                                    <a href="#" class="btn btn-light btn-sm"><i class="far fa-comments mr-2 text-success"></i>Chat</a>
-                                                </td>                                                                        
-                                            </tr>      
-                                            <tr>
-                                                <td>
-                                                    <div class="media">
-                                                        <img src="public/assets/images/users/avatar-3.jpg" alt="" class="thumb-md rounded-circle"> 
-                                                        <div class="media-body ml-2">
-                                                            <p class="mb-0">Tiger Nixon <span class="badge badge-soft-info">UK</span></p>
-                                                            <span class="font-12 text-muted">CEO of WhatsApp</span>
-                                                        </div>
-                                                    </div>                                                                            
-                                                </td>  
-                                                <td class="text-right">
-                                                    <a href="#" class="btn btn-light btn-sm"><i class="far fa-comments mr-2 text-success"></i>Chat</a>
-                                                </td>                                                                        
-                                            </tr>      
-                                            <tr>
-                                                <td>
-                                                    <div class="media">
-                                                        <img src="public/assets/images/users/avatar-4.jpg" alt="" class="thumb-md rounded-circle"> 
-                                                        <div class="media-body ml-2">
-                                                            <p class="mb-0">Ashton Cox <span class="badge badge-soft-pink">USA</span></p>
-                                                            <span class="font-12 text-muted">founder of Google</span>
-                                                        </div>
-                                                    </div>                                                                            
-                                                </td> 
-                                                <td class="text-right">
-                                                    <a href="#" class="btn btn-light btn-sm"><i class="far fa-comments mr-2 text-success"></i>Chat</a>
-                                                </td>                                                                        
-                                            </tr>      
-                                            <tr>
-                                                <td>
-                                                    <div class="media">
-                                                        <img src="public/assets/images/users/avatar-5.jpg" alt="" class="thumb-md rounded-circle"> 
-                                                        <div class="media-body ml-2">
-                                                            <p class="mb-0">Cedric Kelly <span class="badge badge-soft-purple">Canada</span></p>
-                                                            <span class="font-12 text-muted">CEO of Paypal</span>
-                                                        </div>
-                                                    </div>                                                                            
-                                                </td>  
-                                                <td class="text-right">
-                                                    <a href="#" class="btn btn-light btn-sm"><i class="far fa-comments mr-2 text-success"></i>Chat</a>
-                                                </td>                                                                        
-                                            </tr>  
-                                            <tr>
-                                                <td class="">
-                                                    <div class="media">
-                                                        <img src="public/assets/images/users/avatar-2.jpg" alt="" class="thumb-md rounded-circle"> 
-                                                        <div class="media-body ml-2">
-                                                            <p class="mb-0">Garry Pearson <span class="badge badge-soft-info">India</span></p>
-                                                            <span class="font-12 text-muted">CEO of facebook</span>
-                                                        </div>
-                                                    </div>                                                                            
-                                                </td> 
-                                                <td class="text-right">
-                                                    <a href="#" class="btn btn-light btn-sm"><i class="far fa-comments mr-2 text-success"></i>Chat</a>
-                                                </td>                                                                        
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    <div class="media">
-                                                        <img src="public/assets/images/users/avatar-4.jpg" alt="" class="thumb-md rounded-circle"> 
-                                                        <div class="media-body ml-2">
-                                                            <p class="mb-0">Ashton Cox <span class="badge badge-soft-pink">Africa</span></p>
-                                                            <span class="font-12 text-muted">founder of Google</span>
-                                                        </div>
-                                                    </div>                                                                            
-                                                </td> 
-                                                <td class="text-right">
-                                                    <a href="#" class="btn btn-light btn-sm"><i class="far fa-comments mr-2 text-success"></i>Chat</a>
-                                                </td>                                                                        
-                                            </tr>               
-                                            <tr>
-                                                <td>
-                                                    <div class="media">
-                                                        <img src="public/assets/images/users/avatar-1.jpg" alt="" class="thumb-md rounded-circle"> 
-                                                        <div class="media-body ml-2">
-                                                            <p class="mb-0">Roy Saunders <span class="badge badge-soft-success">USA</span></p>
-                                                            <span class="font-12 text-muted">Manager of Bank</span>
-                                                        </div>
-                                                    </div>                                                                            
-                                                </td>  
-                                                <td class="text-right">
-                                                    <a href="#" class="btn btn-light btn-sm"><i class="far fa-comments mr-2 text-success"></i>Chat</a>
-                                                </td>                                                                        
-                                            </tr> 
+                                        <tbody id="proveedores">
                                                                                         
                                         </tbody>
                                     </table>
@@ -389,7 +251,7 @@
                                             <tr>
                                                 <td>Product Devlopment</td>
                                                 <td>
-                                                    <img src="public/assets/images/users/avatar-1.jpg" alt="" class="thumb-sm rounded-circle mr-2">
+                                                    <img src="../public/assets/images/users/avatar-1.jpg" alt="" class="thumb-sm rounded-circle mr-2">
                                                     Kevin Heal
                                                 </td>
                                                 <td>Paypal</td>
@@ -400,7 +262,7 @@
                                             <tr>
                                                 <td>New Office Building</td>
                                                 <td>
-                                                    <img src="public/assets/images/users/avatar-2.jpg" alt="" class="thumb-sm rounded-circle mr-2">
+                                                    <img src="../public/assets/images/users/avatar-2.jpg" alt="" class="thumb-sm rounded-circle mr-2">
                                                     Frank M. Lyons
                                                 </td>
                                                 <td>Paypal</td>
@@ -412,7 +274,7 @@
                                             <tr>
                                                 <td>Market Research</td>
                                                 <td>
-                                                    <img src="public/assets/images/users/avatar-3.jpg" alt="" class="thumb-sm rounded-circle mr-2">
+                                                    <img src="../public/assets/images/users/avatar-3.jpg" alt="" class="thumb-sm rounded-circle mr-2">
                                                     Angelo Butler
                                                 </td>
                                                 <td>Pioneer</td>
@@ -424,7 +286,7 @@
                                             <tr>
                                                 <td>Website &amp; Blog</td>
                                                 <td>
-                                                    <img src="public/assets/images/users/avatar-4.jpg" alt="" class="thumb-sm rounded-circle mr-2">
+                                                    <img src="../public/assets/images/users/avatar-4.jpg" alt="" class="thumb-sm rounded-circle mr-2">
                                                     Phillip Morse
                                                 </td>
                                                 <td>Paypal</td>
@@ -435,7 +297,7 @@
                                             <tr>
                                                 <td>Product Devlopment</td>
                                                 <td>
-                                                    <img src="public/assets/images/users/avatar-5.jpg" alt="" class="thumb-sm rounded-circle mr-2">
+                                                    <img src="../public/assets/images/users/avatar-5.jpg" alt="" class="thumb-sm rounded-circle mr-2">
                                                     Kevin Heal
                                                 </td>
                                                 <td>Paypal</td>
@@ -446,7 +308,7 @@
                                             <tr>
                                                 <td>New Office Building</td>
                                                 <td>
-                                                    <img src="public/assets/images/users/avatar-6.jpg" alt="" class="thumb-sm rounded-circle mr-2">
+                                                    <img src="../public/assets/images/users/avatar-6.jpg" alt="" class="thumb-sm rounded-circle mr-2">
                                                     Frank M. Lyons
                                                 </td>
                                                 <td>Paypal</td>
@@ -471,3 +333,5 @@
         <!-- end wrapper -->
 
 <?php require_once'../view/footer.php';?>
+
+<script src="../view/script/dashboard.js"></script>

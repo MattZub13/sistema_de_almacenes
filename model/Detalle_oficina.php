@@ -106,5 +106,13 @@ Class Solicitud{
         // Manejar el error en caso de que no se obtenga el último id_solicitud
         return false;
     }
+
+    
+}
+
+public function completar($id_solicitud)
+{
+  $sql="UPDATE solicitud SET estado_solicitud='1' WHERE id_solicitud='$id_solicitud'";
+  return ejecutarConsulta($sql);
 }
 }

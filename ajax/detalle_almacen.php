@@ -47,7 +47,7 @@ switch ($_GET["op"]){
 		//se genera la tabla principal con los distintos campos
 		while ($reg = pg_fetch_assoc($rspta)){
 			$data[]=array(
-				"0"=>'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>',
+				"0"=>($reg['estado_solicitud'])?'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>':'<button class="btn btn-warning waves-effect waves-light" onclick="detalle_solicitud('.$reg['id_solicitud'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-sm">Detalle</button>'.'<button class="btn btn-purple waves-effect waves-light" onclick="completar('.$reg['id_solicitud'].')">Completar</button>',
                 "1"=>$reg['fecha_solicitud'],
 				"2"=>($reg['estado_solicitud'])?'<span class="badge badge-pill badge-outline-primary">Completado</span>':
 					'<span class="badge badge-pill badge-outline-danger">En proceso</span>'
@@ -92,6 +92,10 @@ switch ($_GET["op"]){
 		$rspta=$detalle->obtenerUltimoId();
  		//Codificar el resultado utilizando json
  		echo ($rspta);
+	break;
+	case '6':
+		$rspta=$detalle->completar($id_solicitud);
+ 		echo $rspta ? "1:La solicitud fue completada con exito" : "0:El Artículo no fué Activado";
 	break;
 
 }

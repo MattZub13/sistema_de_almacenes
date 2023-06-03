@@ -7,6 +7,8 @@ function init(){
     $("#formulario").on("submit",function(e){
 		guardaryeditar(e);	
 	});
+
+	listar();
     
 }
 
@@ -27,7 +29,10 @@ function limpiar()
 {
     $("#nombre").val("");
     $("#descripcion").val("");
-    $("#precio").val("");
+    $("#ubicacion").val("");
+	$("#telefono").val("");
+	$("id_oficina").val("");
+	
 }
 
 
@@ -52,7 +57,7 @@ function listar(){
                     ],
             "ajax":
                     {
-                        url: '../ajax/articulo.php?op=0',
+                        url: '../ajax/oficina.php?op=8',
                         type : "get",
                         dataType : "json",						
                         error: function(e){
@@ -75,7 +80,7 @@ function guardaryeditar(e)
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 	$.ajax({
-		url: "../ajax/articulo.php?op=1",
+		url: "../ajax/oficina.php?op=1",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -111,24 +116,22 @@ function guardaryeditar(e)
 
 }
 
-function mostrar(id_articulo)
+function mostrar(id_oficina)
 {
-	$.post("../ajax/articulo.php?op=4",{id_articulo : id_articulo}, function(data, status)
+	$.post("../ajax/oficina.php?op=9",{id_oficina : id_oficina}, function(data, status)
 	{
 		data = $.parseJSON(data);
-		$("input[name=nombre]").val(data.nombre_articulo);
-        $("#descripcion").val(data.descripcion_articulo);
-        $("#precio").val(data.precio_unitario);
-        $.post("../ajax/categoria.php?op=5", function(r){
-			$("#categoria").html(r);
-			$('#categoria').trigger('change.select2');
-		});
- 		$("#id_articulo").val(data.id_articulo);
+		$("#nombre").val(data.nombre_oficina);
+        $("#descripcion").val(data.descripcion_oficina);
+        $("#ubicacion").val(data.ubicacion_oficina);
+		$("#telefono").val(data.telefono_oficina);
+        
+ 		$("#id_oficina").val(data.id_oficina);
  	});
 }
 
 //Función para desactivar registros
-function desactivar(id_articulo)
+function desactivar(id_oficina)
 {
 	swal.fire({
 		title: 'Mensaje de Confirmación',
@@ -141,7 +144,7 @@ function desactivar(id_articulo)
 		confirmButtonText: 'Desactivar'
 	}).then((result) => {
 		if (result.value) {
-			$.post("../ajax/articulo.php?op=2", {id_articulo : id_articulo}, function(e){
+			$.post("../ajax/oficina.php?op=2", {id_oficina : id_oficina}, function(e){
 				mensaje=e.split(":");
 					if(mensaje[0]=="1"){  
 						swal.fire(
@@ -165,7 +168,7 @@ function desactivar(id_articulo)
 }
 
 //Función para activar registros
-function activar(id_articulo)
+function activar(id_oficina)
 {
 	swal.fire({
 		title: 'Mensaje de Confirmación',
@@ -178,7 +181,7 @@ function activar(id_articulo)
 		confirmButtonText: 'Activar'
 	}).then((result) => {
 		if (result.value) {
-			$.post("../ajax/articulo.php?op=3", {id_articulo : id_articulo}, function(e){
+			$.post("../ajax/oficina.php?op=3", {id_oficina : id_oficina}, function(e){
 				mensaje=e.split(":");
 					if(mensaje[0]=="1"){  
 						swal.fire(

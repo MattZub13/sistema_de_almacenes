@@ -10,6 +10,13 @@ Class Oficina{
         
     }
 
+    public function listar_oficinas()
+    {
+      $sql="SELECT *
+      FROM oficina;";
+      return ejecutarConsulta($sql);
+    }
+
     public function listar()
     {
       $sql="SELECT *

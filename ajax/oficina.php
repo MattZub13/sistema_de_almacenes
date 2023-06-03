@@ -101,6 +101,38 @@ switch ($_GET["op"]){
 			echo '<option value=' . $reg['id_empleado'] . '>' .$reg['nombre'].' '.$reg['apellido_paterno'].' '.$reg['apellido_materno']. '</option>';
 		}
 	break;
+	case '8':
+		$rspta=$oficina->listar_oficinas();
+ 		//Vamos a declarar un array
+ 		$data= Array();
+
+		//se genera la tabla principal con los distintos campos
+ 		while ($reg = pg_fetch_assoc($rspta)){
+			$data[]=array(
+				"0"=>($reg['estado_oficina'])?'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_oficina'].')" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Editar</button>'.
+					'<button class="btn btn-danger waves-effect waves-light" onclick="desactivar('.$reg['id_oficina'].')">Desactivar</i></button>':
+					'<button class="btn btn-warning waves-effect waves-light" onclick="mostrar('.$reg['id_oficina'].')">Editar</button>'.
+					'<button class="btn btn-purple waves-effect waves-light" onclick="activar('.$reg['id_oficina'].')">Activar</i></button>',
+				"1"=>$reg['nombre_oficina'],
+                "2"=>$reg['ubicacion_oficina'],
+                "3"=>$reg['telefono_oficina'],
+				"4"=>($reg['estado_oficina'])?'<span class="badge badge-pill badge-outline-primary">Activado</span>':
+					'<span class="badge badge-pill badge-outline-danger">Desactivado</span>'
+				);
+		}
+ 		$results = array(
+ 			"sEcho"=>1, //Información para el datatables
+ 			"iTotalRecords"=>count($data), //enviamos el total registros al datatable
+ 			"iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
+ 			"aaData"=>$data);
+ 		echo json_encode($results);
+	break;
+
+	case '9'://obtencion del registro x para la edicion del mismo
+		$rspta=$oficina->detalle_oficina($id_oficina);
+ 		//Codificar el resultado utilizando json
+ 		echo json_encode($rspta);
+	break;
 	
 
 }
